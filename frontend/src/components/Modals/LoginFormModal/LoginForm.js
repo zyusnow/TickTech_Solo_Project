@@ -22,7 +22,7 @@ function LoginForm() {
     return (
         <form onSubmit={handleSubmit}>
             {errors.length ?
-                <ul>
+                <ul className='modal_ul_errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul> : null
             }
@@ -46,7 +46,7 @@ function LoginForm() {
                     required
                 />
             </label>
-            <button type="submit">Log In</button>
+            <button className="button_submit" type="submit">Log In</button>
         </form>
     );
 }

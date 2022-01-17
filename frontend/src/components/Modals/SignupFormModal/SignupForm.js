@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import * as sessionActions from "../../../store/session";
-
-import './SignupForm.css';
+// import './SignupForm.css';
 
 
 
@@ -40,7 +39,7 @@ function SignUpForm() {
     return (
         <form onSubmit={handleSubmit}>
             {errors.length ?
-                <ul>
+                <ul className='modal_ul_errors'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul> : null
             }
@@ -84,7 +83,7 @@ function SignUpForm() {
                     required
                 />
             </label>
-            <button type="submit">Sign Up</button>
+            <button className="button_submit" type="submit">Sign Up</button>
         </form>
     )
 }

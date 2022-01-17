@@ -33,12 +33,23 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <nav>
-            <NavLink to="/">TichTech</NavLink>
+        <>
+        <nav className="nav">
+            <div className='nav_left'>
+            <i className="fab fa-tumblr-square"></i>
+            <NavLink id="nav_head" to="/">TickTech</NavLink>
+            </div>
+            <div className='nav_center'>
+            <NavLink to="/">Find Events</NavLink>
+            <NavLink to="/">Host an Event</NavLink>
+            </div>
             <div className='nav_right'>
                 {isLoaded && sessionLinks}
             </div>
+            {/* <hr></hr> */}
         </nav>
+        <hr></hr>
+        </>
     )
 
 }

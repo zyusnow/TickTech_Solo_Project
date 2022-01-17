@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from "react-router-dom";
 import { Modal } from '../../../context/Modal';
 import * as sessionActions from '../../../store/session';
+import Navigation from '../../Navigation';
 import LoginForm from './LoginForm';
+import '../../Navigation/Navigation.css';
 
 
 function LoginFormModal() {
@@ -30,16 +32,16 @@ function LoginFormModal() {
     }
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Log In</button>
+            <button className='button button_login' onClick={() => setShowModal(true)}>Log In</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <LoginForm />
-                    <hr />
-                    <form onSubmit={DemoLogin}>
-                        <button type="submit">Demo User</button>
+                    <hr className="hrmodal"/>
+                    <form  onSubmit={DemoLogin}>
+                        <button className="button_submit button_secondary"type="submit">Demo User</button>
                     </form>
                     <form onSubmit={handleRedirect}>
-                        <button type="submit">Want to Sign Up?</button>
+                        <button className="button_submit button_transfer" type="submit">Want to Sign Up?</button>
                     </form>
                 </Modal>
             )}

@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Modal } from '../../../context/Modal';
 import * as sessionActions from '../../../store/session';
 import SignupForm from './SignupForm';
+import '../../Navigation/'
 
 function SignupFormModal() {
     const dispatch = useDispatch();
@@ -30,16 +31,16 @@ function SignupFormModal() {
 
     return (
         <>
-        <button onClick={() => setShowModal(true)}>Sign Up</button>
+        <button className='button' onClick={() => setShowModal(true)}>Sign Up</button>
         {showModal && (
             <Modal onClose={() => setShowModal(false)}>
                 <SignupForm />
-                <hr />
+                <hr className="hrmodal"/>
                 <form onSubmit={DemoLogin}>
-                    <button type="submit">Demo User</button>
+                    <button className="button_submit button_secondary"type="submit">Demo User</button>
                 </form>
                 <form onSubmit={handleRedirect}>
-                    <button type="submit">Want to Sign Up?</button>
+                    <button className="button_submit button_transfer" type="submit">Want to Sign Up?</button>
                 </form>
             </Modal>
         )}

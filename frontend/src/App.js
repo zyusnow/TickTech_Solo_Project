@@ -25,7 +25,8 @@ function App() {
         {isLoaded && (
           <div id='main'>
             <Routes>
-              <Route path='/' element={<LandingPage />} />
+              <Route path='/' element={<LandingPage to='/events'/>} />
+              {/* <Route path='/events' element={<Events />} /> */}
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />

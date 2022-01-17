@@ -1,1 +1,37 @@
 /* TODO Add site wide styles */
+:root {
+    background-color: var(--body_bg);
+    --body_bg:#1f212c;
+    font-family: "Open Sans", sans-serif;
+    --body_font_color:rgb(218, 216, 216);
+    --body_highlight_orange:rgb(233, 109, 52);
+    --nav_highlight:#2d303b;
+    --nav_boxshadow:rgba(10, 10, 10, 0.25);
+    --body_white:rgb(219, 218, 218);
+    --body_border:rgb(89, 90, 119);
+    --body_hight_green:#44bfbd;
+    /* --body_hight_green:#3edba3; */
+    --body_hight_lightorange:#e96947
+}
+
+
+*, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--body_font_color)
+    /* line-height: 1.4em; */
+    /* overflow-y: scroll; */
+}
+
+hr {
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(182, 182, 182, 0.3);
+    border-left: none;
+}
