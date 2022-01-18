@@ -7,8 +7,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import LoginPage from './components/LoginPage';
 import SignupPage from "./components/SignupPage";
-import LandingPage from "./components/LandingPage";
 import PageNotFound from "./components/PageNotFound";
+import EventsBrowse from "./components/Events/EventsBrowse";
 
 
 function App() {
@@ -25,8 +25,8 @@ function App() {
         {isLoaded && (
           <div id='main'>
             <Routes>
-              <Route path='/' element={<LandingPage to='/events'/>} />
-              {/* <Route path='/events' element={<Events />} /> */}
+              <Route path='/' element={<Navigate to='/events'/>} />
+              <Route path='/events' element={<EventsBrowse />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />
