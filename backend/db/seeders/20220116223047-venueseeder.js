@@ -37,6 +37,13 @@ module.exports = {
           state: 'WA',
           zipCode: '98109',
         },
+        {
+          name: 'Wallingford House',
+          address: '3300 Wallingford Ave N',
+          city: 'Seattle',
+          state: 'WA',
+          zipCode: '98109',
+        },
     ], {});
   },
 

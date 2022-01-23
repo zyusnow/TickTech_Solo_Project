@@ -10,7 +10,7 @@ import SignupPage from "./components/SignupPage";
 import PageNotFound from "./components/PageNotFound";
 import EventsBrowse from "./components/Events/EventsBrowse";
 
-
+import './app.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

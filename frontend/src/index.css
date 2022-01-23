@@ -10,8 +10,17 @@
     --body_white:rgb(219, 218, 218);
     --body_border:rgb(89, 90, 119);
     --body_hight_green:#44bfbd;
+    --body_hight_lightorange:#e96947;
+    --card_bg:#272a35;
+    /* --card_bg:#222530; */
+    --card_bg_boxshadow:rgba(26, 35, 37, 0.25);
+    /* --card_bg_boxshadow:rgba(10, 10, 10, 0.25); */
     /* --body_hight_green:#3edba3; */
-    --body_hight_lightorange:#e96947
+    --card_type_1:#218048;
+    --card_type_2:#873e23;
+    --card_type_3:#cc606a;
+    --card_type_4:#414faf;
+    --card_type_5:#c444bd;
 }
 
 
@@ -25,8 +34,6 @@ body {
     font-size: 16px;
     font-weight: 300;
     color: var(--body_font_color)
-    /* line-height: 1.4em; */
-    /* overflow-y: scroll; */
 }
 
 hr {
