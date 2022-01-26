@@ -4,7 +4,7 @@ import { csrfFetch } from "./csrf";
 const GET_EVENTS = 'events/getEvents';
 const GET_EVENT = 'events/getEvent';
 const GET_PUBLISHED_EVENTS = 'events/getPublishedEvents';
-const GET_DRAFTS_EVENTS = 'events/getDraftEvents';
+const GET_DRAFT_EVENTS = 'events/getDraftEvents';
 const ADD_PUBLISHED_EVENT= 'events/addPublishedEvent';
 const ADD_DRAFT_EVENT= 'events/addDraftEvent';
 
@@ -34,7 +34,7 @@ const getPublishedEvents = (events) => {
 
 const getDraftEvents = (events) => {
     return {
-        type: GET_DRAFTS_EVENTS,
+        type: GET_DRAFT_EVENTS,
         events
     }
 }
@@ -80,8 +80,14 @@ export const addEvent = (event, published) => async dispatch =>{
         body: JSON.stringify(event)
     });
 
-    const data = await res.json()
-    
+    const data = await res.json();
+    if (published) {
+        dispatch(addPublishedEvent(data))
+    }
+    else{
+        dispatch(addDraftEvent(data))
+    }
+    return data;
 }
 
 
@@ -89,7 +95,7 @@ export const addEvent = (event, published) => async dispatch =>{
 
 
 // reducer
-const initialState = {events: {}, published: {}, drafts: {}};
+const initialState = {events: {}, published: {}, draft: {}};
 const eventReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
@@ -105,11 +111,16 @@ const eventReducer = (state = initialState, action) => {
             newState[action.event.id] = action.event
             // console.log("store", newState)
             return newState;
-        // case GET_PUBLISHED_EVENTS:
-        //     newState = {...state};
-        //     action.events.forEach(event => {
-        //         newState.events[event.id] = event
-        //     })
+        case ADD_PUBLISHED_EVENT:
+            newState = {...state};
+            newState.events[action.event.id] = action.event
+            newState.published[action.event.id] = action.event
+            return newState
+        case ADD_DRAFT_EVENT:
+            newState = {...state};
+            newState.events[action.event.id] = action.event
+            newState.draft[action.event.id] = action.event
+            return newState
         default:
             return state;
     }
