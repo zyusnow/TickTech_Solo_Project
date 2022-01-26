@@ -9,6 +9,9 @@ import LoginPage from './components/LoginPage';
 import SignupPage from "./components/SignupPage";
 import PageNotFound from "./components/PageNotFound";
 import EventsBrowse from "./components/Events/EventsBrowse";
+import EventBrowse from "./components/Events/EventBrowse";
+import AddEvent from "./components/Events/AddEvent";
+
 
 import './app.css'
 function App() {
@@ -21,12 +24,14 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <div id='container'>
+      <div>
         {isLoaded && (
           <div id='main'>
             <Routes>
               <Route path='/' element={<Navigate to='/events'/>} />
               <Route path='/events' element={<EventsBrowse />} />
+              <Route path='/events/add' element={<AddEvent />} />
+              <Route path='/events/:id' element={<EventBrowse />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />

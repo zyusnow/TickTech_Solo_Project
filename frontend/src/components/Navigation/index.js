@@ -40,8 +40,8 @@ function Navigation({ isLoaded }) {
             <NavLink id="nav_head" to="/">TickTech</NavLink>
             </div>
             <div className='nav_center'>
-            <NavLink to="/">Find Events</NavLink>
-            <NavLink to="/">Host an Event</NavLink>
+            <NavLink to="/">Find Tech Events</NavLink>
+            <NavLink to="/events/add">Create an Event</NavLink>
             </div>
             <div className='nav_right'>
                 {isLoaded && sessionLinks}

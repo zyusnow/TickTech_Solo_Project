@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, useNavigate } from "react-router-dom";
 import { fetchApiEvents } from '../../../store/event';
 import './EventsBrowse.css'
 
 function EventsBrowse() {
     const dispatch = useDispatch();
     const events = useSelector(state => state.event.events);
-
+    const navigate = useNavigate();
     useEffect(() => {
         dispatch(fetchApiEvents());
     }, [dispatch]);
@@ -18,6 +19,10 @@ function EventsBrowse() {
         else return (str)?.slice(0, 70) + '...';
     }
 
+    const toEvent = (id, e) => {
+        e.preventDefault();
+        navigate(`/events/${id}`);
+    }
 
     return (
         <>
@@ -27,7 +32,7 @@ function EventsBrowse() {
 
                 <div className='card_container'>
                     {eventsArr.map(event => (
-                        <div className='one_card_container' key={event?.id}>
+                        <div className='one_card_container' key={event?.id} onClick={e=>toEvent(event.id,e)}>
                             <div className='img_container'>
                                 <img className="img" src={event?.imgUrl}></img>
                             </div>
