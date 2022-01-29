@@ -37,10 +37,10 @@ export const fetchApiVenues = () => async dispatch => {
     }
 }
 
-export const addNewVenue = () => async dispatch => {
+export const addNewVenue = (venue) => async dispatch => {
     const res = await csrfFetch(`/api/venues/add`, {
         method: 'POST',
-        body: JSON.stringify(spot)
+        body: JSON.stringify(venue)
       });
     if (res.ok) {
         const venue = await res.json();
@@ -70,7 +70,7 @@ const venueReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_VENUES:
             newState = {...state};
-            action.venues.forEach(type => {
+            action.venues.forEach(venue => {
                 newState.venues[venue.id] = venue
             })
             // console.log("reducer", newState)

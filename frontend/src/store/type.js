@@ -16,7 +16,7 @@ export const fetchApiTypes = () => async dispatch => {
     if (res.ok) {
         const types = await res.json();
         dispatch(getTypes(types))
-        // console.log("store", event)
+        console.log("store", types)
     }
 }
 
@@ -30,7 +30,7 @@ const typeReducer = (state = initialState, action) => {
             action.types.forEach(type => {
                 newState.types[type.id] = type
             })
-            // console.log("reducer", newState)
+            console.log("type reducer", newState)
             return newState;
         default:
             return state;

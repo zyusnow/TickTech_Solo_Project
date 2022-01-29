@@ -1,7 +1,7 @@
 #event_browse_container{
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 300px 300px;
+    grid-template-rows: 300px 400px;
     gap:20px
 }
 
