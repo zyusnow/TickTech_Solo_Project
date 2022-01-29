@@ -10,5 +10,68 @@
 .add_info{
     color: var(--body_lightgrey);
     font-size: 1em;
-    font-style:oblique
+    font-style:oblique;
+    margin-bottom:2.6em
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.venue_container{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.form_container label{
+    font-size: 1.2em;
+    margin-left: 40px;
+    font-style:oblique;
+    font-weight: 340;
+    color:rgb(201, 219, 233)
+
+}
+
+.form_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.form_container input:focus,
+.form_container select:focus{
+    outline: none;
+    border: 1px solid var(--body_lightgrey);
+}
+
+.form_container select{
+    height: 40px;
+}
+
+.form_container input,
+.form_container textarea,
+.form_container select{
+    /* width: 400px; */
+    margin: 20px 40px;
+    line-height: 40px;
+    background-color: var(--card_bg);
+    border:none;
+    font-size: 14px;
+    color:white;
+    padding-left: 10px;
+
+    /* width: 80%; */
+    /* font-size: 14px;
+    background-color: transparent;
+    padding: 0px;
+
+    color:rgb(80, 79, 79);
+    line-height: 30px;
+    border: 0.8px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px; */
+
 }

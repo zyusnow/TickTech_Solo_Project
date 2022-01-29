@@ -97,12 +97,12 @@ function AddEvent() {
             <div id="main2">
                 <div className="add_title">Create an event</div>
                 <div className='add_info'>Name your event and tell event-goers why they should come. Add details that highlight what makes it unique.</div>
-                <div id='add_container'>
-                    <form className='login_form' onSubmit={handleSubmit}>
+                <div className="add_container">
+                    <form className='form_container' onSubmit={handleSubmit}>
                     <ul>
                         {venueErrors.concat(eventErrors).map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
-                    <div>
+                    <div className="form_content">
                         <label htmlFor='name'>Event Name:</label>
                         <input
                             type="text"
@@ -111,6 +111,8 @@ function AddEvent() {
                             required
                             name='name'
                         />
+                    </div>
+                    <div className="form_content">
                         <label htmlFor='date'>Event Time:</label>
                         <input
                             type="datetime-local"
@@ -119,6 +121,8 @@ function AddEvent() {
                             required
                             name='date'
                         />
+                    </div>
+                    <div className="form_content">
                         <label htmlFor='type'>Event Type</label>
                         <select
                             type="text"
@@ -130,6 +134,8 @@ function AddEvent() {
                                 <option key={type.id} value={type.id}>{type.name}</option>
                             ))}
                         </select>
+                    </div>
+                    <div className="form_content">
                         <label htmlFor='capacity'>Capacity:</label>
                         <input
                             type="number"
@@ -138,6 +144,8 @@ function AddEvent() {
                             required
                             name='capacity'
                         />
+                    </div>
+                    <div className="form_content">
                         <label htmlFor='description'>Description:</label>
                         <textarea
                             value={description}
@@ -145,6 +153,8 @@ function AddEvent() {
                             required
                             name='description'
                         />
+                    </div>
+                    <div className="form_content">
                         <label htmlFor='imgUrl'>Image Link</label>
                         <input
                             type="text"
@@ -153,6 +163,8 @@ function AddEvent() {
                             required
                             name='imgUrl'
                         />
+                    </div>
+                    <div>
                         <label htmlFor='virtual'>Location:</label>
                         <input
                             name='virtual'
@@ -169,7 +181,7 @@ function AddEvent() {
                             onChange={(e) => setVirtual(true)}
                         /> Online Event
                     </div>
-                    {virtual && (
+                    {virtual === true && (
                         <div>
                             <label htmlFor='virtualUrl'>Online Link</label>
                             <input
@@ -181,53 +193,61 @@ function AddEvent() {
                         </div>
 
                     )}
-                    {!virtual && (
-                        <div>
-                            <label htmlFor='venueName'>Venue Name:</label>
-                            <input
-                                type="text"
-                                name='venueName'
-                                value={venueName}
-                                onChange={(e) => setVenueName(e.target.value)}
-                            />
-                            <label htmlFor='venueAddress'>Address:</label>
-                            <input
-                                type="text"
-                                name='venueAddress'
-                                value={venueAddress}
-                                onChange={(e) => setVenueAddress(e.target.value)}
-                            />
-                            <label htmlFor='venueCity'>City:</label>
-                            <input
-                                type="text"
-                                name="venueCity"
-                                value={venueCity}
-                                onChange={(e) => setVenueCity(e.target.value)}
-                            />
-                            <label htmlFor='venueState'>State:</label>
-                            <input
-                                type="text"
-                                name="venueState"
-                                value={venueState}
-                                onChange={(e) => setVenueState(e.target.value)}
-                            />
-                            <label htmlFor='venueZipCode'>Zip Code:</label>
-                            <input
-                                type="text"
-                                name="venueZipCode"
-                                value={venueZipCode}
-                                onChange={(e) => setVenueZipCode(e.target.value)}
-                            />
-                            
-
-
+                    {virtual === false && (
+                        <div className="venue_container">
+                            <div>
+                                <label htmlFor='venueName'>Venue Name:</label>
+                                <input
+                                    type="text"
+                                    name='venueName'
+                                    value={venueName}
+                                    required
+                                    onChange={(e) => setVenueName(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor='venueAddress'>Address:</label>
+                                <input
+                                    type="text"
+                                    name='venueAddress'
+                                    value={venueAddress}
+                                    required
+                                    onChange={(e) => setVenueAddress(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor='venueCity'>City:</label>
+                                <input
+                                    type="text"
+                                    name="venueCity"
+                                    value={venueCity}
+                                    required
+                                    onChange={(e) => setVenueCity(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                 <label htmlFor='venueState'>State:</label>
+                                 <input
+                                    type="text"
+                                    name="venueState"
+                                    value={venueState}
+                                    required
+                                    onChange={(e) => setVenueState(e.target.value)}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor='venueZipCode'>Zip Code:</label>
+                                <input
+                                    type="text"
+                                    name="venueZipCode"
+                                    value={venueZipCode}
+                                    required
+                                    onChange={(e) => setVenueZipCode(e.target.value)}
+                                />
+                            </div>
                         </div>
-
                     )}
-
-
-
-
+                        <button type="submit">Submit</button>
                     </form>
                 </div>
             </div>
