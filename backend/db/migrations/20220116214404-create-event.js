@@ -17,10 +17,12 @@ module.exports = {
         allowNull: false
       },
       capacity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       description: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: false
       },
       virtual: {
         type: Sequelize.BOOLEAN,

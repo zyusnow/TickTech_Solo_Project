@@ -69,9 +69,9 @@ function AddEvent() {
         const newEvent = {
             name,
             date,
-            capacity: capacity ? capacity : null,
-            description: description ? description : null,
-            virtual: virtual,
+            capacity,
+            description,
+            virtual,
             virtualUrl: virtualUrl ? virtualUrl : null,
             imgUrl,
             published,
@@ -98,7 +98,63 @@ function AddEvent() {
                 <div className="add_title">Create an event</div>
                 <div className='add_info'>Name your event and tell event-goers why they should come. Add details that highlight what makes it unique.</div>
                 <div id='add_container'>
+                    <form className='login_form' onSubmit={handleSubmit}>
+                    <ul>
+                        {venueErrors.concat(eventErrors).map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <div>
+                        <label htmlFor='name'>Event Name:</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            name='name'
+                        />
+                        <label htmlFor='date'>Event Time:</label>
+                        <input
+                            type="datetime-local"
+                            value={date}
+                            onChange={(e) => setDate(e.target.value)}
+                            required
+                            name='date'
+                        />
+                        <label htmlFor='type'>Event Type</label>
+                        <input
+                            type="text"
+                            value={type}
+                            onChange={(e) => setType(e.target.value)}
+                            required
+                        />
+                        <label htmlFor='capacity'>Capacity:</label>
+                        <input
+                            type="number"
+                            value={capacity}
+                            onChange={(e) => setCapacity(e.target.value)}
+                            required
+                            name='capacity'
+                        />
+                        <label htmlFor='description'>Description:</label>
+                        <textarea
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            required
+                            name='description'
+                        />
+                        <label htmlFor='imgUrl'>Image Link</label>
+                        <input
+                            type="text"
+                            value={imgUrl}
+                            onChange={(e) => setImgUrl(e.target.value)}
+                            required
+                        />
 
+
+
+
+                    </div>
+
+                    </form>
                 </div>
             </div>
         </>
