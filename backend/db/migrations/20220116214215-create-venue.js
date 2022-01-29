@@ -23,6 +23,10 @@ module.exports = {
       zipCode: {
         type: Sequelize.STRING(10)
       },
+      published: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

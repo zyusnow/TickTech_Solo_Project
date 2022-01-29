@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
-    zipCode: DataTypes.STRING
+    zipCode: DataTypes.STRING,
+    published:DataTypes.BOOLEAN
   }, {});
   Venue.associate = function(models) {
     // associations can be defined here
