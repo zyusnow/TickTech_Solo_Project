@@ -19,7 +19,7 @@ function AddEvent() {
     const [date, setDate] = useState("");
     const [capacity, setCapacity] = useState("");
     const [description, setDescription] = useState('');
-    const [virtual, setVirtual] = useState(false);
+    const [virtual, setVirtual] = useState("");
     const [virtualUrl, setVirtualUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("");
     const [published, setPublished] = useState(true);
@@ -120,12 +120,16 @@ function AddEvent() {
                             name='date'
                         />
                         <label htmlFor='type'>Event Type</label>
-                        <input
+                        <select
                             type="text"
                             value={type}
                             onChange={(e) => setType(e.target.value)}
-                            required
-                        />
+                            required>
+                            <option value=''>Select</option>
+                            {typesArr.map((type) => (
+                                <option key={type.id} value={type.id}>{type.name}</option>
+                            ))}
+                        </select>
                         <label htmlFor='capacity'>Capacity:</label>
                         <input
                             type="number"
@@ -147,12 +151,82 @@ function AddEvent() {
                             value={imgUrl}
                             onChange={(e) => setImgUrl(e.target.value)}
                             required
+                            name='imgUrl'
                         />
-
-
-
-
+                        <label htmlFor='virtual'>Location:</label>
+                        <input
+                            name='virtual'
+                            type='radio'
+                            value='false'
+                            checked={virtual === false}
+                            onChange={(e) => setVirtual(false)}
+                        /> Venue
+                        <input
+                            name='virtual'
+                            type='radio'
+                            value='true'
+                            checked={virtual === true}
+                            onChange={(e) => setVirtual(true)}
+                        /> Online Event
                     </div>
+                    {virtual && (
+                        <div>
+                            <label htmlFor='virtualUrl'>Online Link</label>
+                            <input
+                                type="text"
+                                value={virtualUrl}
+                                name="virtualUrl"
+                                onChange={(e) => setVirtualUrl(e.target.value)}
+                            />
+                        </div>
+
+                    )}
+                    {!virtual && (
+                        <div>
+                            <label htmlFor='venueName'>Venue Name:</label>
+                            <input
+                                type="text"
+                                name='venueName'
+                                value={venueName}
+                                onChange={(e) => setVenueName(e.target.value)}
+                            />
+                            <label htmlFor='venueAddress'>Address:</label>
+                            <input
+                                type="text"
+                                name='venueAddress'
+                                value={venueAddress}
+                                onChange={(e) => setVenueAddress(e.target.value)}
+                            />
+                            <label htmlFor='venueCity'>City:</label>
+                            <input
+                                type="text"
+                                name="venueCity"
+                                value={venueCity}
+                                onChange={(e) => setVenueCity(e.target.value)}
+                            />
+                            <label htmlFor='venueState'>State:</label>
+                            <input
+                                type="text"
+                                name="venueState"
+                                value={venueState}
+                                onChange={(e) => setVenueState(e.target.value)}
+                            />
+                            <label htmlFor='venueZipCode'>Zip Code:</label>
+                            <input
+                                type="text"
+                                name="venueZipCode"
+                                value={venueZipCode}
+                                onChange={(e) => setVenueZipCode(e.target.value)}
+                            />
+                            
+
+
+                        </div>
+
+                    )}
+
+
+
 
                     </form>
                 </div>
