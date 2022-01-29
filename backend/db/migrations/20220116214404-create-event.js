@@ -23,7 +23,8 @@ module.exports = {
         type: Sequelize.STRING(1000)
       },
       virtual: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
       },
       virtualUrl:{
         type: Sequelize.STRING(200),

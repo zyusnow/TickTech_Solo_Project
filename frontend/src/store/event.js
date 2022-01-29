@@ -80,14 +80,19 @@ export const addEvent = (event, published) => async dispatch =>{
         body: JSON.stringify(event)
     });
 
-    const data = await res.json();
-    if (published) {
-        dispatch(addPublishedEvent(data))
-    }
-    else{
-        dispatch(addDraftEvent(data))
-    }
-    return data;
+    const resBody = await res.json();
+    if (!resBody.errors) {
+        const data = resBody;
+        if (published) {
+            await dispatch(addPublishedEvent(data))
+        }
+        else{
+            await dispatch(addDraftEvent(data))
+        }
+        return data;
+      } else {
+        return resBody;
+      }
 }
 
 

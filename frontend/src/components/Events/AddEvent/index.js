@@ -42,6 +42,7 @@ function AddEvent() {
     const handleSubmit = async(e) => {
         e.preventDefault();
         if (virtual === false) {
+            let venueId;
             const newVenue = {
                 name: venueName ? venueName : null,
                 address: venueAddress ? venueAddress : null,
@@ -50,12 +51,29 @@ function AddEvent() {
                 zip: venueZipCode ? venueZipCode : null,
                 published: published
             }
-        }
+
+            let errVenue = [];
+            const  data = await dispatch(addNewVenue(newVenue, published))
+            venueId = data.id
+            if (data.venueErrors) { // if data has errors inside
+                const errList = Object.values(data.venueErrors)  // get values from obj
+                const flatErrList = [...errList];  // flat
+                flatErrList.map(each => errVenue.push(each.msg))  // make it in an array
+                setVenueErrors(errVenue)  // right now get errors
+            }
+
         const newEvent = {
             name,
             date,
-            capacity,
-            
+            capacity: capacity ? capacity : null,
+            description: description ? description : null,
+            virtual: virtual,
+            virtualUrl: virtualUrl ? virtualUrl : null,
+            imgUrl,
+            published,
+            type,
+            categoryId:category,
+            venueId
         }
 
 

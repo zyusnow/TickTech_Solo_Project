@@ -58,7 +58,7 @@ const validateEvent = [
         .if((value, { req }) => req.body.published)
         .notEmpty()
         .withMessage('Please provide a type for your event'),
-    handleValidationErrors
+    // handleValidationErrors
 ]
 
 // ---------------------get all events_published---------------------
@@ -88,20 +88,27 @@ router.get('/:id(\\d+)', asyncHandler(async function (req, res) {
 router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
     const { id } = req.user;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
-    const event = await Event.create({
-        name,
-        date,
-        capacity,
-        description,
-        virtual,
-        virtualUrl,
-        imgUrl,
-        published,
-        venueId,
-        typeId,
-        hostId: id
-    });
-    res.json(event);
+
+    const validateErrors = validationResult(req);
+    if (validateErrors.isEmpty()) {
+        const event = await Event.create({
+            name,
+            date,
+            capacity,
+            description,
+            virtual,
+            virtualUrl,
+            imgUrl,
+            published,
+            venueId,
+            typeId,
+            hostId: id
+        });
+        res.json(event);
+    }
+    else {
+        return res.json(validateErrors)
+    }
 }));
 
 // ---------------------update one event---------------------
@@ -111,16 +118,22 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) =>
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
-    if (id === hostId) {
+
+    if (validateErrors.isEmpty()) {
         const event = await eventToUpdate.update({name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId});
         return res.json(event)
     } else {
-        const err = new Error('Forbidden');
-        err.status = 403;
-        err.title = 'User is not authorized';
-        err.errors = ['No permission to update.'];
-        return next(err);
+        res.json(validateErrors)
     }
+
+    // if (id === hostId) {
+    // } else {
+    //     const err = new Error('Forbidden');
+    //     err.status = 403;
+    //     err.title = 'User is not authorized';
+    //     err.errors = ['No permission to update.'];
+    //     return next(err);
+    // }
 }))
 
 // ---------------------delete one event---------------------
