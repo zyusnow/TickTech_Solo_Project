@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addEvent } from "../../../store/event";
 import { fetchApiTypes } from "../../../store/type";
+import { addNewVenue } from "../../../store/venue";
+
 
 import './AddEvent.css'
 
@@ -42,7 +45,7 @@ function AddEvent() {
     const handleSubmit = async(e) => {
         e.preventDefault();
         if (virtual === false) {
-            let venueId;
+            var venueId;
             const newVenue = {
                 name: venueName ? venueName : null,
                 address: venueAddress ? venueAddress : null,
@@ -61,6 +64,7 @@ function AddEvent() {
                 flatErrList.map(each => errVenue.push(each.msg))  // make it in an array
                 setVenueErrors(errVenue)  // right now get errors
             }
+        }
 
         const newEvent = {
             name,
@@ -71,12 +75,21 @@ function AddEvent() {
             virtualUrl: virtualUrl ? virtualUrl : null,
             imgUrl,
             published,
-            type,
-            categoryId:category,
+            typeId:type,
             venueId
         }
 
-
+        let errEvent = [];
+        const data2 = await dispatch(addEvent(newEvent))
+        if (data2.eventErrors) { // if data has errors inside
+            const errList2 = Object.values(data2.eventErrors)  // get values from obj
+            const flatErrList2 = [...errList2];  // flat
+            flatErrList2.map(each => errEvent.push(each.msg))  // make it in an array
+            setEventErrors(errEvent)  // right now get errors
+          } else {
+            if (published) navigate(`/events/${data2.id}`);
+            else navigate('/events');
+          }
     }
 
     return (

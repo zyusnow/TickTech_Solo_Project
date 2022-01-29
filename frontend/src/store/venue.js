@@ -41,12 +41,16 @@ export const addNewVenue = (venue) => async dispatch => {
     const res = await csrfFetch(`/api/venues/add`, {
         method: 'POST',
         body: JSON.stringify(venue)
-      });
-    if (res.ok) {
-        const venue = await res.json();
-        dispatch(addVenue(venue))
-        return venue
-        // console.log("store", venue)
+    });
+
+    const resBody = await res.json();
+
+    if (!resBody.errors) {
+        const data = resBody;
+        await dispatch(addVenue(venue));
+        return data
+    } else {
+    return resBody;
     }
 }
 
@@ -54,12 +58,16 @@ export const editOldVenue = (venue, venueId) => async dispatch => {
     const res = await csrfFetch(`/api/venues/${venueId}/edit`, {
         method: 'PUT',
         body: JSON.stringify(venue)
-      });
-    if (res.ok) {
-        const venue = await res.json();
-        dispatch(editVenue(venue))
-        return venue
-        // console.log("store", venue)
+    });
+
+    const resBody = await res.json()
+
+    if (!resBody.errors) {
+      const venue = resBody;
+      await dispatch(editVenue(venue));
+      return venue
+    } else {
+      return resBody;
     }
 }
 
