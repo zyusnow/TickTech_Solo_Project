@@ -15,20 +15,20 @@ function AddEvent() {
     const types = useSelector(state => state.type.types);
     const typesArr = Object.values(types)
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState("tt");
     const [date, setDate] = useState("");
-    const [capacity, setCapacity] = useState("");
-    const [description, setDescription] = useState('');
-    const [virtual, setVirtual] = useState("");
+    const [capacity, setCapacity] = useState("100");
+    const [description, setDescription] = useState('test');
+    const [virtual, setVirtual] = useState(false);
     const [virtualUrl, setVirtualUrl] = useState("");
-    const [imgUrl, setImgUrl] = useState("");
+    const [imgUrl, setImgUrl] = useState("https://res.cloudinary.com/dprnsux1z/image/upload/v1642373646/fabio-oyXis2kALVg-unsplash_oxqc8e.jpg");
     const [published, setPublished] = useState(true);
     const [type, setType] = useState("");
-    const [venueName, setVenueName] = useState("");
-    const [venueAddress, setVenueAddress] = useState("");
-    const [venueCity, setVenueCity] = useState("");
-    const [venueState, setVenueState] = useState("");
-    const [venueZipCode, setVenueZipCode] = useState("");
+    const [venueName, setVenueName] = useState("bb");
+    const [venueAddress, setVenueAddress] = useState("123st");
+    const [venueCity, setVenueCity] = useState("Seattle");
+    const [venueState, setVenueState] = useState("WA");
+    const [venueZipCode, setVenueZipCode] = useState("98019");
     const [venueErrors, setVenueErrors] = useState([]);
     const [eventErrors, setEventErrors] = useState([]);
 
@@ -123,7 +123,7 @@ function AddEvent() {
                         />
                     </div>
                     <div className="form_content">
-                        <label htmlFor='type'>Event Type</label>
+                        <label htmlFor='type'>Event Type:</label>
                         <select
                             type="text"
                             value={type}
@@ -164,7 +164,7 @@ function AddEvent() {
                             name='imgUrl'
                         />
                     </div>
-                    <div>
+                    <div id="add_location">
                         <label htmlFor='virtual'>Location:</label>
                         <input
                             name='virtual'
@@ -182,7 +182,7 @@ function AddEvent() {
                         /> Online Event
                     </div>
                     {virtual === true && (
-                        <div>
+                        <div className="form_content">
                             <label htmlFor='virtualUrl'>Online Link</label>
                             <input
                                 type="text"
@@ -194,8 +194,8 @@ function AddEvent() {
 
                     )}
                     {virtual === false && (
-                        <div className="venue_container">
-                            <div>
+                        <div className="venue_container ">
+                            <div className="form_content">
                                 <label htmlFor='venueName'>Venue Name:</label>
                                 <input
                                     type="text"
@@ -205,7 +205,7 @@ function AddEvent() {
                                     onChange={(e) => setVenueName(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className="form_content">
                                 <label htmlFor='venueAddress'>Address:</label>
                                 <input
                                     type="text"
@@ -215,7 +215,7 @@ function AddEvent() {
                                     onChange={(e) => setVenueAddress(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className="form_content">
                                 <label htmlFor='venueCity'>City:</label>
                                 <input
                                     type="text"
@@ -225,7 +225,7 @@ function AddEvent() {
                                     onChange={(e) => setVenueCity(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className="form_content">
                                  <label htmlFor='venueState'>State:</label>
                                  <input
                                     type="text"
@@ -235,7 +235,7 @@ function AddEvent() {
                                     onChange={(e) => setVenueState(e.target.value)}
                                 />
                             </div>
-                            <div>
+                            <div className="form_content">
                                 <label htmlFor='venueZipCode'>Zip Code:</label>
                                 <input
                                     type="text"
@@ -247,7 +247,20 @@ function AddEvent() {
                             </div>
                         </div>
                     )}
-                        <button type="submit">Submit</button>
+                    <div className="add_btn_container">
+                        <button
+                            className="add_btn add_btn_1"
+                            type="submit"
+                            onClick={() => setPublished(false)}
+                        >Save Draft
+                        </button>
+                        <button
+                            className="add_btn add_btn_2"
+                            type="submit"
+                            onClick={() => setPublished(true)}
+                        >Publish Event
+                        </button>
+                    </div>
                     </form>
                 </div>
             </div>

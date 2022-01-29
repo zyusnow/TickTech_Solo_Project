@@ -38,29 +38,29 @@
 .form_content{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .form_container input:focus,
+.form_container textarea:focus,
 .form_container select:focus{
     outline: none;
-    border: 1px solid var(--body_lightgrey);
+    border: 1px solid var(--body_hight_lightorange);
 }
 
-.form_container select{
-    height: 40px;
-}
 
 .form_container input,
 .form_container textarea,
 .form_container select{
     /* width: 400px; */
-    margin: 20px 40px;
+    margin: 18px 40px;
     line-height: 40px;
     background-color: var(--card_bg);
     border:none;
     font-size: 14px;
     color:white;
     padding-left: 10px;
+    font-family: "Open Sans", sans-serif;
 
     /* width: 80%; */
     /* font-size: 14px;
@@ -74,4 +74,53 @@
     padding-left: 15px;
     padding-right: 15px; */
 
+}
+.form_container select{
+    height: 40px;
+}
+
+.form_container textarea{
+    height: 200px;
+    overflow:scroll
+}
+
+#add_location{
+    margin-bottom: 50px;
+}
+
+.add_btn_container{
+    display: flex;
+    justify-content:space-between;
+    margin:0 40px
+}
+
+.add_btn{
+    width: 10em;
+    height: 40px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 4px;
+    border: none;
+    color:var(--body_white);
+}
+
+.add_btn_2{
+    background-color: var(--body_hight_green);
+    margin-left:40px
+
+}
+
+.add_btn_1{
+    background-color: var(--body_white);
+    color:var(--body_lightgrey);
+}
+
+
+
+.add_btn_1:hover{
+    cursor: pointer;
+}
+
+.add_btn_2:hover{
+    cursor: pointer;
 }

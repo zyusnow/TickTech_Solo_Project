@@ -79,6 +79,9 @@
     font-size: 16px;
 }
 
+#nav_logout:hover{
+    cursor: pointer;
+}
 /* ------------------------------------------------------------ */
 .button {
     box-sizing: border-box;
