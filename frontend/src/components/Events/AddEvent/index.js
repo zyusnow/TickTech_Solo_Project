@@ -26,6 +26,8 @@ function AddEvent() {
     const [venueCity, setVenueCity] = useState("");
     const [venueState, setVenueState] = useState("");
     const [venueZipCode, setVenueZipCode] = useState("");
+    const [venueErrors, setVenueErrors] = useState([]);
+    const [eventErrors, setEventErrors] = useState([]);
 
     useEffect(() => {
         dispatch(fetchApiTypes());
@@ -39,8 +41,24 @@ function AddEvent() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        if (virtual === false) {
+            const newVenue = {
+                name: venueName ? venueName : null,
+                address: venueAddress ? venueAddress : null,
+                city: venueCity ? venueCity : null,
+                state: venueState ? venueState : null,
+                zip: venueZipCode ? venueZipCode : null,
+                published: published
+            }
+        }
+        const newEvent = {
+            name,
+            date,
+            capacity,
+            
+        }
 
-        
+
     }
 
     return (

@@ -15,6 +15,7 @@ module.exports = {
           city: 'Seattle',
           state: 'WA',
           zipCode: '98109',
+          published: true
         },
         {
           name: 'AR Workshop Seattle',
@@ -22,6 +23,7 @@ module.exports = {
           city: 'Seattle',
           state: 'WA',
           zipCode: '98115',
+          published: true
         },
         {
           name: 'Ballard Coffee Works',
@@ -29,6 +31,7 @@ module.exports = {
           city: 'Seattle',
           state: 'WA',
           zipCode: '98107',
+          published: true
         },
         {
           name: 'societyM meeting rooms Seattle',
@@ -36,6 +39,7 @@ module.exports = {
           city: 'Seattle',
           state: 'WA',
           zipCode: '98109',
+          published: true
         },
         {
           name: 'Wallingford House',
@@ -43,6 +47,7 @@ module.exports = {
           city: 'Seattle',
           state: 'WA',
           zipCode: '98109',
+          published: true
         },
     ], {});
   },
