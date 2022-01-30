@@ -44,6 +44,7 @@ export const addNewVenue = (venue) => async dispatch => {
     });
 
     const resBody = await res.json();
+    console.log(resBody);
 
     if (!resBody.errors) {
         const data = resBody;

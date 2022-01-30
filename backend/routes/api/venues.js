@@ -63,19 +63,32 @@ router.get('/:id(\\d+)',asyncHandler(async function (req, res) {
 }))
 
 // ---------------------add one venue---------------------
-router.post('/new', requireAuth, validateVenue, asyncHandler(async (req, res) => {
+router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) => {
     const {name, address, city, state, zipCode, published} = req.body;
-    const venue = await Venue.create({name, address, city, state, zipCode, published});
-    res.json(venue)
+    console.log(req.body);
+    const validateErrors = validationResult(req);
+    if (validateErrors.isEmpty()) {
+        const venue = await Venue.create({name, address, city, state, zipCode, published});
+        res.json(venue)
+    } else {
+        return res.json(validateErrors)
+    }
 }))
 
 // ---------------------edit one venue---------------------
 router.get('/:id(\\d+/edit)',asyncHandler(async function (req, res) {
     const venueId = parseInt(req.params.venueId, 10);
     const {name, address, city, state, zipCode, published} = req.body;
-    const venue = await Venue.findByPk(venueId);
-    await venue.update({name, address, city, state, zipCode, published})
 
-    const venue = await Venue.findByPk(venueId);
-    res.json(venue)
+
+    if (validateErrors.isEmpty()) {
+        await venue.update({name, address, city, state, zipCode, published})
+        const venue = await Venue.findByPk(venueId);
+        res.json(venue)
+    } else {
+        return res.json(validateErrors)
+    }
+
 }))
+
+module.exports = router;

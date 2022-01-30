@@ -31,15 +31,17 @@ const validateEvent = [
         .withMessage('Event description needs to be less than 1000 characters.'),
     check('virtual')
         .if((value, { req }) => req.body.published)
-        .exists({ checkFalsy: true })
+        .notEmpty()
         .withMessage("Please provide an event location."),
     check('virtualUrl')
         .if((value, { req }) => req.body.published)
         .if((value, { req }) => req.body.virtual)
         .exists({ checkFalsy: true })
+        .withMessage("Please provide a virtual url.")
         .isURL()
+        .withMessage("Please provide a valid url.")
         .isLength({ max: 200 })
-        .withMessage("Please provide a valid vitual Url for your event."),
+        .withMessage("Please provide a valid vitual url with max 200 length."),
     check('imgUrl')
         .if((value, { req }) => req.body.published)
         .exists({ checkFalsy: true })
@@ -85,10 +87,10 @@ router.get('/:id(\\d+)', asyncHandler(async function (req, res) {
 }))
 
 // ---------------------create one event---------------------
-router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
     const { id } = req.user;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
-
+    console.log(req.body);
     const validateErrors = validationResult(req);
     if (validateErrors.isEmpty()) {
         const event = await Event.create({
@@ -112,7 +114,7 @@ router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) =>
 }));
 
 // ---------------------update one event---------------------
-router.post('/new', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+router.post('/edit', requireAuth, validateEvent, asyncHandler(async (req, res) => {
     const { id } = req.user;
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);

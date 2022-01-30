@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addEvent } from "../../../store/event";
 import { fetchApiTypes } from "../../../store/type";
+import { addEvent } from "../../../store/event";
 import { addNewVenue } from "../../../store/venue";
 
 
@@ -15,7 +15,7 @@ function AddEvent() {
     const types = useSelector(state => state.type.types);
     const typesArr = Object.values(types)
 
-    const [name, setName] = useState("tt");
+    const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [capacity, setCapacity] = useState("100");
     const [description, setDescription] = useState('test');
@@ -23,7 +23,7 @@ function AddEvent() {
     const [virtualUrl, setVirtualUrl] = useState("");
     const [imgUrl, setImgUrl] = useState("https://res.cloudinary.com/dprnsux1z/image/upload/v1642373646/fabio-oyXis2kALVg-unsplash_oxqc8e.jpg");
     const [published, setPublished] = useState(true);
-    const [type, setType] = useState("");
+    const [typeId, setTypeId] = useState("");
     const [venueName, setVenueName] = useState("bb");
     const [venueAddress, setVenueAddress] = useState("123st");
     const [venueCity, setVenueCity] = useState("Seattle");
@@ -44,45 +44,52 @@ function AddEvent() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
+        let venueId;
+        // let venueHasError = false;
         if (virtual === false) {
-            var venueId;
             const newVenue = {
                 name: venueName ? venueName : null,
                 address: venueAddress ? venueAddress : null,
                 city: venueCity ? venueCity : null,
                 state: venueState ? venueState : null,
-                zip: venueZipCode ? venueZipCode : null,
+                zipCode: venueZipCode ? venueZipCode : null,
                 published: published
             }
 
             let errVenue = [];
             const  data = await dispatch(addNewVenue(newVenue, published))
+            const errors = data.errors;
             venueId = data.id
-            if (data.venueErrors) { // if data has errors inside
-                const errList = Object.values(data.venueErrors)  // get values from obj
+            if (errors) { // if data has errors inside
+                const errList = Object.values(errors)  // get values from obj
                 const flatErrList = [...errList];  // flat
                 flatErrList.map(each => errVenue.push(each.msg))  // make it in an array
                 setVenueErrors(errVenue)  // right now get errors
+                // venueHasError = true;
             }
         }
-
+        // console.log(venueId);
         const newEvent = {
-            name,
-            date,
-            capacity,
-            description,
+            name: name ? name : 'draft event',
+            date: date ? date: null,
+            capacity:capacity ? capacity : null,
+            description: description ? description : null,
             virtual,
             virtualUrl: virtualUrl ? virtualUrl : null,
-            imgUrl,
+            imgUrl: imgUrl ? imgUrl : null,
             published,
-            typeId:type,
-            venueId
+            typeId:typeId ? +typeId : null,
+            venueId: venueId ? +venueId : null,
         }
+
 
         let errEvent = [];
         const data2 = await dispatch(addEvent(newEvent))
-        if (data2.eventErrors) { // if data has errors inside
-            const errList2 = Object.values(data2.eventErrors)  // get values from obj
+        console.log("AddEvent Component",data2)
+        const errors2 = data2.errors;
+        if (errors2) { // if data has errors inside
+            // venueHasError === true
+            const errList2 = Object.values(errors2)  // get values from obj
             const flatErrList2 = [...errList2];  // flat
             flatErrList2.map(each => errEvent.push(each.msg))  // make it in an array
             setEventErrors(errEvent)  // right now get errors
@@ -108,7 +115,7 @@ function AddEvent() {
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            required
+                            // required
                             name='name'
                         />
                     </div>
@@ -118,7 +125,7 @@ function AddEvent() {
                             type="datetime-local"
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
-                            required
+                            // required
                             name='date'
                         />
                     </div>
@@ -126,9 +133,10 @@ function AddEvent() {
                         <label htmlFor='type'>Event Type:</label>
                         <select
                             type="text"
-                            value={type}
-                            onChange={(e) => setType(e.target.value)}
-                            required>
+                            // required
+                            value={typeId}
+                            onChange={(e) => setTypeId(e.target.value)}
+                            >
                             <option value=''>Select</option>
                             {typesArr.map((type) => (
                                 <option key={type.id} value={type.id}>{type.name}</option>
@@ -141,7 +149,7 @@ function AddEvent() {
                             type="number"
                             value={capacity}
                             onChange={(e) => setCapacity(e.target.value)}
-                            required
+                            // required
                             name='capacity'
                         />
                     </div>
@@ -150,7 +158,7 @@ function AddEvent() {
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            required
+                            // required
                             name='description'
                         />
                     </div>
@@ -160,7 +168,7 @@ function AddEvent() {
                             type="text"
                             value={imgUrl}
                             onChange={(e) => setImgUrl(e.target.value)}
-                            required
+                            // required
                             name='imgUrl'
                         />
                     </div>
@@ -201,7 +209,7 @@ function AddEvent() {
                                     type="text"
                                     name='venueName'
                                     value={venueName}
-                                    required
+                                    // required
                                     onChange={(e) => setVenueName(e.target.value)}
                                 />
                             </div>
@@ -211,7 +219,7 @@ function AddEvent() {
                                     type="text"
                                     name='venueAddress'
                                     value={venueAddress}
-                                    required
+                                    // required
                                     onChange={(e) => setVenueAddress(e.target.value)}
                                 />
                             </div>
@@ -221,7 +229,7 @@ function AddEvent() {
                                     type="text"
                                     name="venueCity"
                                     value={venueCity}
-                                    required
+                                    // required
                                     onChange={(e) => setVenueCity(e.target.value)}
                                 />
                             </div>
@@ -231,7 +239,7 @@ function AddEvent() {
                                     type="text"
                                     name="venueState"
                                     value={venueState}
-                                    required
+                                    // required
                                     onChange={(e) => setVenueState(e.target.value)}
                                 />
                             </div>
@@ -241,7 +249,7 @@ function AddEvent() {
                                     type="text"
                                     name="venueZipCode"
                                     value={venueZipCode}
-                                    required
+                                    // required
                                     onChange={(e) => setVenueZipCode(e.target.value)}
                                 />
                             </div>

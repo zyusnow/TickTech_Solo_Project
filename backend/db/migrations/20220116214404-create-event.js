@@ -14,33 +14,35 @@ module.exports = {
       },
       date: {
         type: Sequelize.DATE,
-        allowNull: false
+        // defaultValue: Sequelize.fn('now')
+        // allowNull: false
       },
       capacity: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        // allowNull: false
       },
       description: {
         type: Sequelize.STRING(1000),
-        allowNull: false
+        // allowNull: false
       },
       virtual: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        defaultValue: false
+        // allowNull: false,
       },
       virtualUrl:{
         type: Sequelize.STRING(200),
       },
       imgUrl: {
         type: Sequelize.STRING(200),
-        allowNull: false,
+        // allowNull: false,
       },
       published: {
         allowNull: false,
         type: Sequelize.BOOLEAN
       },
       hostId: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Users' }
       },
@@ -49,7 +51,7 @@ module.exports = {
         references: { model: 'Venues' }
       },
       typeId: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: 'Types' }
       },

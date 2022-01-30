@@ -11,7 +11,7 @@ function EventBrowse() {
     const sessionUser = useSelector(state => state.session.user);
     const eventObj = useSelector(state => state.event);  // get spot: spotReducer(in store index.js) 's state
     const event = eventObj[eventId];
-    console.log("hihi", event)
+    console.log("eventbrowse", event)
 
     useEffect(() => {
         dispatch(fetchApiEvent(eventId));
