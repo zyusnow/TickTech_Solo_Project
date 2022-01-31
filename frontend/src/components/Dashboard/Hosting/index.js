@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate, Route, Routes } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import HostingAll from '../HostingAll';
+import HostingDrafts from '../HostingDrafts';
+import HostingPublished from '../HostingPublished';
 
 import './Hosting.css'
 
@@ -21,7 +24,7 @@ function Hosting(){
     const goToHosting = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/hosting`)
+          navigate(`/users/${sessionUser.id}/hosting/all`)
         }
     }
     const goToAttending = (e) => {
@@ -57,25 +60,24 @@ function Hosting(){
                     <div className='table_container_nav'>
                         <h2>Hosting</h2>
                         <div className='hosting_content'>
-                            <NavLink
-                                to='/users/${sessionUser.id}/hosting/all'>
-                                All
-                            </NavLink>
-                            <NavLink
-                                to='/users/${sessionUser.id}/hosting/published'>
-                                Drafts
-                            </NavLink>
-                            <NavLink
-                                to='/users/${sessionUser.id}/hosting/drafts'>
-                                Published
-                            </NavLink>
+                            <div className='test'>
+                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/all'>All</NavLink>
+                            </div>
+                            <div className='divider'>|</div>
+                            <div>
+                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/published'>Drafts</NavLink>
+                            </div>
+                            <div className='divider'>|</div>
+                            <div>
+                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/drafts'>Published</NavLink>
+                            </div>
                         </div>
-                        <Routes>
-                            <Route path='all' element={<HostingAll />} />
-                            <Route path='drafts' element={<HostingDrafts />} />
-                            <Route path='published' element={<HostingPublished />} />
-                        </Routes>
                     </div>
+                    <Routes>
+                        <Route path='all' element={<HostingAll />} />
+                        <Route path='drafts' element={<HostingDrafts />} />
+                        <Route path='published' element={<HostingPublished />} />
+                    </Routes>
                 </div>
             </div>
         </>

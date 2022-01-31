@@ -35,7 +35,7 @@
 }
 
 
-/* ---------------------------------Content right------------------------------------------------ */
+/* ---------------------------------Content right nav------------------------------------------------ */
 .table_container{
     width: 100%;
 }
@@ -46,4 +46,28 @@
     align-items:center;
     justify-content: space-between;
     padding-right: 40px;
+}
+
+.hosting_content{
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+
+}
+
+.hosting_link{
+    color:var(--body_highlight_orange);
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    box-sizing: border-box;
+
+}
+.hosting_link:hover{
+    cursor: pointer;
+
+}
+
+.divider{
+    color: var(--body_lightgrey);;
 }

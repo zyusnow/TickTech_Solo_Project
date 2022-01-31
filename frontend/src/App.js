@@ -35,7 +35,7 @@ function App() {
               <Route path='/events' element={<EventsBrowse />} />
               <Route path='/events/add' element={<AddEvent />} />
               <Route path='/events/:id' element={<EventBrowse />} />
-              <Route path='/users/:id' element={<Navigate to='/users/:id/hosting'/>} />
+              <Route path='/users/:id' element={<Navigate to='/users/:id/hosting/all'/>} />
               <Route path='/users/:id/hosting/*' element={<Hosting />} />
               <Route path='/users/:id/saved' element={<Saved />} />
               <Route path='/users/:id/attending' element={<Attending />} />
