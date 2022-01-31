@@ -13,9 +13,9 @@ import PageNotFound from "./components/PageNotFound";
 import EventsBrowse from "./components/Events/EventsBrowse";
 import EventBrowse from "./components/Events/EventBrowse";
 import AddEvent from "./components/Events/AddEvent";
-import UserProfile from "./components/Dashboard/ProfilePage";
-
-
+import Hosting from "./components/Dashboard/Hosting";
+import Attending from "./components/Dashboard/Attending";
+import Saved from "./components/Dashboard/Saved";
 import './app.css'
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +35,10 @@ function App() {
               <Route path='/events' element={<EventsBrowse />} />
               <Route path='/events/add' element={<AddEvent />} />
               <Route path='/events/:id' element={<EventBrowse />} />
-              <Route path='/users/:id' element={<UserProfile />} />
+              <Route path='/users/:id' element={<Navigate to='/users/:id/hosting'/>} />
+              <Route path='/users/:id/hosting/*' element={<Hosting />} />
+              <Route path='/users/:id/saved' element={<Saved />} />
+              <Route path='/users/:id/attending' element={<Attending />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />

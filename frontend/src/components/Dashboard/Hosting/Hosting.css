@@ -8,7 +8,7 @@
 .content{
     background-color: var(--nav_highlight);
     width: fit-content;
-    padding: 2em 5em 2em 1.6em;
+    padding: 2em 7em 2em 2em;
     margin-right: 2em;
     border-radius: 6px;
 }
@@ -19,4 +19,22 @@
 
 .content li:not(:last-child){
     padding-bottom: 1em;
+}
+
+#content_btn{
+    border: none;
+    background-color: transparent;
+    color: var(--body_font_color);
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+#content_btn:hover{
+    cursor: pointer;
+    color:var(--body_highlight_orange)
+}
+
+#content_btn:checked{
+    cursor: pointer;
+    color:var(--body_highlight_orange)
 }

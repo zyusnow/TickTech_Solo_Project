@@ -38,11 +38,11 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     return res.json({ user });
 }));
 
-router.get('/:userId/events', asyncHandler(async function(req, res){
-    const userId = parseInt(req.params.userId, 10);
+router.get('/:id/hosting', asyncHandler(async function(req, res){
+    const id = parseInt(req.params.userId, 10);
     const events = await Spot.findAll({
         where: {
-            hostId: userId,
+            hostId: id,
         },
         include: [User, Venue, Type]
     })
@@ -50,7 +50,7 @@ router.get('/:userId/events', asyncHandler(async function(req, res){
   }))
 
 
-router.get('/:userId/events/published', asyncHandler(async function(req, res){
+router.get('/:id/hosting/published', asyncHandler(async function(req, res){
     const userId = parseInt(req.params.userId, 10);
     const events = await Spot.findAll({
         where: {
@@ -63,7 +63,7 @@ router.get('/:userId/events/published', asyncHandler(async function(req, res){
   }))
 
 
-  router.get('/:userId/events/drafts', asyncHandler(async function(req, res){
+  router.get('/:id/hosting/drafts', asyncHandler(async function(req, res){
     const userId = parseInt(req.params.userId, 10);
     const events = await Spot.findAll({
         where: {
