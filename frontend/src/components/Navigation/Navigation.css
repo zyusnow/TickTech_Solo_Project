@@ -45,6 +45,10 @@
     align-items: center;
 }
 
+.nav_welcome{
+    margin-right: 1em;
+}
+
 .nav_right_menu{
     border:none;
 }
@@ -58,17 +62,21 @@
 /* ------------------------------------------------------------ */
 
 .profile-dropdown {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     border-radius: 6px;
     width: fit-content;
-    padding:10px;
-    margin-top: 220px;
+    padding:20px 10px;
+    margin-top: 200px;
     box-shadow: 0px 8px 10px var(--nav_boxshadow);
     background-color: var(--nav_highlight);
-}
-.profile-dropdown li {
     list-style-type: none;
-    padding:10px;
+    gap:18px
+}
+
+.profile-dropdown li{
+    padding-top: 5px;
 }
 
 #nav_logout{
@@ -81,6 +89,7 @@
 
 #nav_logout:hover{
     cursor: pointer;
+    color:var(--body_highlight_orange)
 }
 /* ------------------------------------------------------------ */
 .button {

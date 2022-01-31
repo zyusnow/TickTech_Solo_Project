@@ -1,0 +1,22 @@
+#profile_container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* ---------------------------------Content------------------------------------------------ */
+.content{
+    background-color: var(--nav_highlight);
+    width: fit-content;
+    padding: 2em 5em 2em 1.6em;
+    margin-right: 2em;
+    border-radius: 6px;
+}
+
+.content ul{
+    list-style-type: none;
+}
+
+.content li:not(:last-child){
+    padding-bottom: 1em;
+}
