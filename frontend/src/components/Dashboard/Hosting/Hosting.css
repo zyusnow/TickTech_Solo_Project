@@ -4,7 +4,7 @@
 }
 
 
-/* ---------------------------------Content------------------------------------------------ */
+/* ---------------------------------Content Left------------------------------------------------ */
 .content{
     background-color: var(--nav_highlight);
     width: fit-content;
@@ -34,7 +34,16 @@
     color:var(--body_highlight_orange)
 }
 
-#content_btn:checked{
-    cursor: pointer;
-    color:var(--body_highlight_orange)
+
+/* ---------------------------------Content right------------------------------------------------ */
+.table_container{
+    width: 100%;
+}
+.table_container_nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+    padding-right: 40px;
 }

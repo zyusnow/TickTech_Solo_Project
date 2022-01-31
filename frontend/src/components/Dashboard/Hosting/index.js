@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate, Route, Routes } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import Attending from '../Attending';
-import Saved from '../Saved';
+
 import './Hosting.css'
 
 function Hosting(){
@@ -55,12 +54,28 @@ function Hosting(){
                     </ul>
                 </div>
                 <div className='table_container'>
-                    <h2>Hosting</h2>
-                    <Routes>
-                        <Route path='/users/:id/hosting' element={<Hosting />} />
-                        <Route path='/users/:id/attending' element={<Attending />} />
-                        <Route path='/users/:id/saved' element={<Saved />} />
-                    </Routes>
+                    <div className='table_container_nav'>
+                        <h2>Hosting</h2>
+                        <div className='hosting_content'>
+                            <NavLink
+                                to='/users/${sessionUser.id}/hosting/all'>
+                                All
+                            </NavLink>
+                            <NavLink
+                                to='/users/${sessionUser.id}/hosting/published'>
+                                Drafts
+                            </NavLink>
+                            <NavLink
+                                to='/users/${sessionUser.id}/hosting/drafts'>
+                                Published
+                            </NavLink>
+                        </div>
+                        <Routes>
+                            <Route path='all' element={<HostingAll />} />
+                            <Route path='drafts' element={<HostingDrafts />} />
+                            <Route path='published' element={<HostingPublished />} />
+                        </Routes>
+                    </div>
                 </div>
             </div>
         </>
@@ -69,3 +84,10 @@ function Hosting(){
 
 
 export default Hosting
+
+
+                // <Routes>
+                //     <Route path='all' element={<EventsAll />} />
+                //     <Route path='drafts' element={<EventsDrafts />} />
+                //     <Route path='published' element={<EventsPublished />} />
+                // </Routes>
