@@ -74,6 +74,18 @@ export const fetchApiEvent = (id) => async dispatch => {
     }
 }
 
+export const fetchApiPublishedEvents = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${id}/hosting/published`)
+    const events = await res.json()
+    dispatch(getPublishedEvents(events))
+}
+export const fetchApiDraftEvents = (id) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${id}/hosting/drafts`)
+    const events = await res.json()
+    dispatch(getDraftEvents(events))
+}
+
+
 export const addEvent = (event, published) => async dispatch =>{
     const res = await csrfFetch(`/api/events/add`, {
         method: 'POST',
@@ -127,6 +139,21 @@ const eventReducer = (state = initialState, action) => {
             newState.events[action.event.id] = action.event
             newState.draft[action.event.id] = action.event
             return newState
+        case GET_PUBLISHED_EVENTS:
+            newState = {...state};
+            action.events.forEach(event => {
+                newState.published[event.id] = event
+            })
+            // console.log("reducer", newState)
+            return newState;
+        case GET_DRAFT_EVENTS:
+            newState = {...state};
+            action.events.forEach(event => {
+                newState.draft[event.id] = event
+            })
+            // console.log("reducer", newState)
+            return newState;
+
         default:
             return state;
     }
