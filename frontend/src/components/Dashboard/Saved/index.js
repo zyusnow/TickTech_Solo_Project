@@ -20,7 +20,7 @@ function Saved(){
     const goToHosting = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/hosting/all`)
+          navigate(`/users/hosting/published`)
         }
     }
     const goToAttending = (e) => {
@@ -40,7 +40,7 @@ function Saved(){
     return (
         <>
             <div id='profile_container'>
-                <div className='content'>
+                <div className='da_content'>
                     <ul>
                         <li>
                             <button id="content_btn" onClick={goToHosting}>Hosting</button>
@@ -54,7 +54,7 @@ function Saved(){
                     </ul>
                 </div>
                 <div className='table_container'>
-                    <h2>Saved</h2>
+                    <div className='nav_sub_title'>Saved</div>
                 </div>
             </div>
         </>

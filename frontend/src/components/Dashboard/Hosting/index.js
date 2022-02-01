@@ -23,7 +23,7 @@ function Hosting(){
     const goToHosting = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/hosting/all`)
+          navigate(`/users/hosting/published`)
         }
     }
     const goToAttending = (e) => {
@@ -42,27 +42,27 @@ function Hosting(){
     return (
         <>
             <div id='profile_container'>
-                <div className='content'>
+                <div className='da_content'>
                     <ul>
-                        <li className='content_li'>
+                        <li className='da_content_li'>
                             <button id="content_btn" onClick={goToHosting}>Hosting</button>
                         </li>
-                        <li className='content_li'>
+                        <li className='da_content_li'>
                             <button id="content_btn" onClick={goToAttending}>Attending</button>
                         </li>
-                        <li className='content_li'>
+                        <li className='da_content_li'>
                             <button id="content_btn" onClick={goToSaved}>Saved</button>
                         </li>
                     </ul>
                 </div>
                 <div className='table_container'>
                     <div className='table_container_nav'>
-                        <h2>Hosting</h2>
+                        <div className='nav_sub_title'>Hosting</div>
                         <div className='hosting_content'>
-                            <div className='test'>
-                                <NavLink className="hosting_link" to={`/users/hosting/all`}>All</NavLink>
-                            </div>
-                            <div className='divider'>|</div>
+                            {/* <div className='test'>
+                                <NavLink className="hosting_link" to={`/users/hosting/allevents`}>All</NavLink>
+                            </div> */}
+                            {/* <div className='divider'>|</div> */}
                             <div>
                                 <NavLink className="hosting_link" to={`/users/hosting/published`}>Published</NavLink>
                             </div>
@@ -73,7 +73,7 @@ function Hosting(){
                         </div>
                     </div>
                     <Routes>
-                        <Route path='all' element={<HostingAll />} />
+                        {/* <Route path='all' element={<HostingAll />} /> */}
                         <Route path='drafts' element={<HostingDrafts />} />
                         <Route path='published' element={<HostingPublished />} />
                     </Routes>
@@ -85,10 +85,3 @@ function Hosting(){
 
 
 export default Hosting
-
-
-                // <Routes>
-                //     <Route path='all' element={<EventsAll />} />
-                //     <Route path='drafts' element={<EventsDrafts />} />
-                //     <Route path='published' element={<EventsPublished />} />
-                // </Routes>

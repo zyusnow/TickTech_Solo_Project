@@ -5,19 +5,21 @@
 
 
 /* ---------------------------------Content Left------------------------------------------------ */
-.content{
+.da_content{
     background-color: var(--nav_highlight);
     width: fit-content;
     padding: 2em 7em 2em 2em;
     margin-right: 2em;
     border-radius: 6px;
+    height: 170px;
+
 }
 
-.content ul{
+.da_content ul{
     list-style-type: none;
 }
 
-.content li:not(:last-child){
+.da_content li:not(:last-child){
     padding-bottom: 1em;
 }
 
@@ -70,4 +72,36 @@
 
 .divider{
     color: var(--body_lightgrey);;
+}
+
+.nav_sub_title{
+    font-size: 1.8em;
+    font-weight: 500;
+    color: var(--body_hight_green);
+}
+
+/* ---------------------------------Table------------------------------------------------ */
+.sub_sub_title{
+    margin: 2.4em 0 1.6em 0;
+    font-size: 1.2em;
+    font-style: oblique;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+table{
+    background-color: var(--card_bg);
+    width: 100%;
+}
+
+table th{
+    padding: 10px;
+    font-weight: 600;
+    text-align: left;
+}
+
+table td{
+    padding: 10px;
+    color:white
+
 }

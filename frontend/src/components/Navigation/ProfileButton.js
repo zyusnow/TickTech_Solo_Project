@@ -36,7 +36,7 @@ function ProfileButton({ user }) {
   const manageEvents = (e) => {
     e.preventDefault();
     if(sessionUser) {
-      navigate(`/users/hosting/all`)
+      navigate(`/users/hosting/published`)
     }
   }
 
