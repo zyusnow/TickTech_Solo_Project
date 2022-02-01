@@ -16,7 +16,6 @@ function HostingAll(){
 
     return(
         <>
-            <h2>Hosting All</h2>
             <HostingPublished />
             <HostingDrafts />
         </>

@@ -20,19 +20,20 @@ function Saved(){
     const goToHosting = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/hosting`)
+          navigate(`/users/hosting/all`)
         }
     }
     const goToAttending = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/attending`)
+          navigate(`/users/attending`)
         }
       }
     const goToSaved = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/saved`)
+        //   navigate(`/users/${sessionUser.id}/saved`)
+          navigate(`/users/saved`)
         }
       }
 

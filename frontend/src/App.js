@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import * as sessionActions from "./store/session";
 
@@ -20,9 +20,11 @@ import './app.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+  console.log(sessionUser)
 
   return (
     <>
@@ -35,10 +37,9 @@ function App() {
               <Route path='/events' element={<EventsBrowse />} />
               <Route path='/events/add' element={<AddEvent />} />
               <Route path='/events/:id' element={<EventBrowse />} />
-              <Route path='/users/:id' element={<Navigate to='/users/:id/hosting/all'/>} />
-              <Route path='/users/:id/hosting/*' element={<Hosting />} />
-              <Route path='/users/:id/saved' element={<Saved />} />
-              <Route path='/users/:id/attending' element={<Attending />} />
+              <Route path='/users/hosting/*' element={<Hosting />} />
+              <Route path='/users/saved' element={<Saved />} />
+              <Route path='/users/attending' element={<Attending />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />

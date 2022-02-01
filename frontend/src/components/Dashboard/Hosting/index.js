@@ -14,29 +14,28 @@ function Hosting(){
     const navigate = useNavigate();
     const sessionUser = useSelector(state => state.session.user);
 
-
     useEffect(()=> {
         if (!sessionUser) {
             navigate('/login')
         }
-    },[])
+    },[sessionUser])
 
     const goToHosting = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/hosting/all`)
+          navigate(`/users/hosting/all`)
         }
     }
     const goToAttending = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/attending`)
+          navigate(`/users/attending`)
         }
       }
     const goToSaved = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/${sessionUser.id}/saved`)
+          navigate(`/users/saved`)
         }
       }
 
@@ -61,15 +60,15 @@ function Hosting(){
                         <h2>Hosting</h2>
                         <div className='hosting_content'>
                             <div className='test'>
-                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/all'>All</NavLink>
+                                <NavLink className="hosting_link" to={`/users/hosting/all`}>All</NavLink>
                             </div>
                             <div className='divider'>|</div>
                             <div>
-                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/published'>Drafts</NavLink>
+                                <NavLink className="hosting_link" to={`/users/hosting/published`}>Published</NavLink>
                             </div>
                             <div className='divider'>|</div>
                             <div>
-                                <NavLink className="hosting_link" to='/users/${sessionUser.id}/hosting/drafts'>Published</NavLink>
+                                <NavLink className="hosting_link" to={`/users/hosting/drafts`}>Drafts</NavLink>
                             </div>
                         </div>
                     </div>

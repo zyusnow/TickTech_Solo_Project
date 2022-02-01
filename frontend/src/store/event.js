@@ -74,13 +74,13 @@ export const fetchApiEvent = (id) => async dispatch => {
     }
 }
 
-export const fetchApiPublishedEvents = (id) => async dispatch => {
-    const res = await csrfFetch(`/api/users/${id}/hosting/published`)
+export const fetchApiPublishedEvents = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}/hosting/published`)
     const events = await res.json()
     dispatch(getPublishedEvents(events))
 }
-export const fetchApiDraftEvents = (id) => async dispatch => {
-    const res = await csrfFetch(`/api/users/${id}/hosting/drafts`)
+export const fetchApiDraftEvents = (userId) => async dispatch => {
+    const res = await csrfFetch(`/api/users/${userId}/hosting/drafts`)
     const events = await res.json()
     dispatch(getDraftEvents(events))
 }

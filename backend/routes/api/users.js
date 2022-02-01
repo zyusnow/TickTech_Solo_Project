@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Venue, Type } = require('../../db/models');
+const { Event, User, Venue, Type } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
@@ -38,11 +38,11 @@ router.post('/', validateSignup, asyncHandler(async (req, res) => {
     return res.json({ user });
 }));
 
-router.get('/:id/hosting', asyncHandler(async function(req, res){
-    const id = parseInt(req.params.userId, 10);
-    const events = await Spot.findAll({
+router.get('/:id/hosting/all', asyncHandler(async function(req, res){
+    const userId = parseInt(req.params.id, 10);
+    const events = await Event.findAll({
         where: {
-            hostId: id,
+            hostId: userId,
         },
         include: [User, Venue, Type]
     })
@@ -51,8 +51,8 @@ router.get('/:id/hosting', asyncHandler(async function(req, res){
 
 
 router.get('/:id/hosting/published', asyncHandler(async function(req, res){
-    const userId = parseInt(req.params.userId, 10);
-    const events = await Spot.findAll({
+    const userId = parseInt(req.params.id, 10);
+    const events = await Event.findAll({
         where: {
             hostId: userId,
             published: true
@@ -64,8 +64,8 @@ router.get('/:id/hosting/published', asyncHandler(async function(req, res){
 
 
   router.get('/:id/hosting/drafts', asyncHandler(async function(req, res){
-    const userId = parseInt(req.params.userId, 10);
-    const events = await Spot.findAll({
+    const userId = parseInt(req.params.id, 10);
+    const events = await Event.findAll({
         where: {
             hostId: userId,
             published: false
