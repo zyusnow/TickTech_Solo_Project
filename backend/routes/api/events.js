@@ -88,6 +88,7 @@ router.get('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 // ---------------------create one event---------------------
 router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+    console.log(req);
     const { id } = req.user;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
     console.log(req.body);
@@ -139,12 +140,13 @@ router.post('/edit', requireAuth, validateEvent, asyncHandler(async (req, res) =
 }))
 
 // ---------------------delete one event---------------------
-router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
+router.delete('/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
+    //console.log(req);
     const eventId = parseInt(req.params.id, 10);
     const event = await Event.findByPk(eventId);
     const hostId = event.hostId;
-    console.log("hihi", req.session)
-    // const { id } = req.user;
+    // console.log("hihi", req.session)
+    const { id } = req.user;
     console.log("deleteroute_id", id)
     if (id === hostId) {
         await event.destroy();

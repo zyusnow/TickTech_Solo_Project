@@ -8,7 +8,7 @@ import '../Hosting/Hosting.css'
 function Attending(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state?.session?.user);
 
 
     useEffect(()=> {

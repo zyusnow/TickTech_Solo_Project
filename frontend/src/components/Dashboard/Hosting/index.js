@@ -12,7 +12,7 @@ import './Hosting.css'
 function Hosting(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state?.session?.user);
 
     useEffect(()=> {
         if (!sessionUser) {

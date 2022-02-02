@@ -139,7 +139,7 @@ function AddEvent() {
                             >
                             <option value=''>Select</option>
                             {typesArr.map((type) => (
-                                <option key={type.id} value={type.id}>{type.name}</option>
+                                <option key={type?.id} value={type?.id}>{type?.name}</option>
                             ))}
                         </select>
                     </div>

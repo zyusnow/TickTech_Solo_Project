@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 function HostingAll(){
     const navigate = useNavigate();
-    const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state?.session?.user);
 
     useEffect(()=> {
         if (!sessionUser) {

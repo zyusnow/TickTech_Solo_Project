@@ -8,8 +8,8 @@ function EventBrowse() {
     const dispatch = useDispatch();
     const {id} = useParams();   // id here is a string
     const eventId = +id;  // change it to a number
-    const sessionUser = useSelector(state => state.session.user);
-    const eventObj = useSelector(state => state.event);  // get spot: spotReducer(in store index.js) 's state
+    const sessionUser = useSelector(state => state?.session?.user);
+    const eventObj = useSelector(state => state?.event);  // get spot: spotReducer(in store index.js) 's state
     const event = eventObj[eventId];
     console.log("eventbrowse", event)
 

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from "react-router-dom";
 import { Modal } from '../../../context/Modal';
-import { deleteOldSpot } from '../../../store/event';
+import { deleteOldSpot, fetchApiDraftEvents } from '../../../store/event';
 
 function DeleteModal({eventId, published}) {
         const dispatch = useDispatch();
         const navigate = useNavigate();
         const [showModal, setShowModal] = useState(false);
-
+        const sessionUser = useSelector((state) => state?.session?.user);
         const handleDelete = (e) => {
             e.preventDefault();
             dispatch(deleteOldSpot(eventId, published));

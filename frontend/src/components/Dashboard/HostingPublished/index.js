@@ -6,11 +6,11 @@ import { fetchApiPublishedEvents } from '../../../store/event';
 
 function HostingPublished(){
     const dispatch = useDispatch();
-    const events = useSelector(state => state.event.published);
+    const events = useSelector(state => state?.event?.published);
     const navigate = useNavigate();
-    const sessionUser = useSelector((state) => state.session.user);
+    const sessionUser = useSelector((state) => state?.session?.user);
     useEffect(() => {
-        dispatch(fetchApiPublishedEvents(sessionUser.id));
+        dispatch(fetchApiPublishedEvents(sessionUser?.id));
         // pass sessionUser.id that store needs, because store is: fetchApiDraftEvents = (userId)
     }, [dispatch]);
 
@@ -31,9 +31,9 @@ function HostingPublished(){
                     <tbody>
                         {Object.values(eventsArr).map(event => (
                             <tr key={event.id}>
-                                <td>{event.date.slice(0,10)}</td>
+                                <td>{event?.date.slice(0,10)}</td>
                                 <td>
-                                    <Link to={`/events/${event.id}`}>{event.name}</Link>
+                                    <Link to={`/events/${event?.id}`}>{event?.name}</Link>
                                 </td>
                                 <td>Edit</td>
                                 <td>Delete</td>
