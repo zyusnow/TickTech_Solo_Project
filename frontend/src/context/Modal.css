@@ -10,66 +10,97 @@
     align-items: center;
   }
 
-  #modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.38);
-  }
+#modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.38);
+}
 
-  #modal-content {
-    position: absolute;
-    background-color:var(--nav_highlight);
-    width: 440px;
-    height: fit-content;
+#modal-content {
+  position: absolute;
+  background-color:var(--nav_highlight);
+  width: 440px;
+  height: fit-content;
 
-    padding:40px;
-    border-radius: 8px;
-    box-shadow: 0px 8px 10px var(--nav_boxshadow);
-  }
+  padding:40px;
+  border-radius: 8px;
+  box-shadow: 0px 8px 10px var(--nav_boxshadow);
+}
 
-  #modal-content input{
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    color: var(--body-color);
-    border: 1px solid var(--body_border);
-    caret-color: var(--accent-color-2);
-    background: none;
-  }
+#modal-content input{
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  color: var(--body-color);
+  border: 1px solid var(--body_border);
+  caret-color: var(--accent-color-2);
+  background: none;
+}
 
-  #modal-content input:focus{
-    color: var(--body_hight_green);
-    outline:var(--body_hight_green);
-    border: 1px solid var(--body_hight_green);
-  }
+#modal-content input:focus{
+  color: var(--body_hight_green);
+  outline:var(--body_hight_green);
+  border: 1px solid var(--body_hight_green);
+}
 
-  .button_submit{
-    width:100%;
-    background-color: var(--body_hight_green);
-    box-sizing: border-box;
-    padding:10px 0;
-    margin: 8px 0;
-    font-size: 14px;
-    border-radius: 5px;
-    border: none;
-    color:var(--body_white);
-  }
+.button_submit{
+  width:100%;
+  background-color: var(--body_hight_green);
+  box-sizing: border-box;
+  padding:10px 0;
+  margin: 8px 0;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  color:var(--body_white);
+}
 
-  .button_submit:hover{
-    cursor: pointer;
-  }
+.button_submit:hover{
+  cursor: pointer;
+}
 
-  .button_submit.button_secondary{
-    background-color: var(--body_hight_lightorange);
-  }
+.button_submit.button_secondary{
+  background-color: var(--body_hight_lightorange);
+}
 
-  .button_submit.button_transfer{
-    background-color: var(--body_hight_lightorange);
-  }
+.button_submit.button_transfer{
+  background-color: var(--body_hight_lightorange);
+}
 
-  .hrmodal{
-    margin: 8px 0;
-  }
+.hrmodal{
+  margin: 8px 0;
+}
+
+
+
+/* delete modal */
+.delete_btn {
+  border: none;
+  color:var(--body_white);
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.delete_btn:hover{
+  cursor: pointer;
+}
+
+.delete_confirm_container{
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+  gap:2em
+}
+
+.button_cancel{
+  width: 100px;
+  background-color: red;
+}
+
+.buttton_confirm{
+  width: 100px;
+}

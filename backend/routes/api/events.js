@@ -143,7 +143,9 @@ router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
     const eventId = parseInt(req.params.id, 10);
     const event = await Event.findByPk(eventId);
     const hostId = event.hostId;
-    const {id} = req.user
+    console.log("hihi", req.session)
+    // const { id } = req.user;
+    console.log("deleteroute_id", id)
     if (id === hostId) {
         await event.destroy();
         return res.json()

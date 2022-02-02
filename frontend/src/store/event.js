@@ -55,12 +55,16 @@ const addDraftEvent = (event) => {
 }
 
 const deletePublishedEvent = (id) => {
-    type:DELETE_PUBLISHED_EVENT,
-    id
+    return {
+        type:DELETE_PUBLISHED_EVENT,
+        id
+    }
 }
 const deleteDraftEvent = (id) => {
-    type:DELETE_DRAFT_EVENT,
-    id
+    return {
+        type:DELETE_DRAFT_EVENT,
+        id
+    }
 }
 
 // thunk
@@ -119,7 +123,7 @@ export const addEvent = (event, published) => async dispatch =>{
 
 
 export const deleteOldSpot = (id, published) => async dispatch => {
-    const res = await csrfFetch(`/api/events${id}`, {
+    const res = await csrfFetch(`/api/events/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

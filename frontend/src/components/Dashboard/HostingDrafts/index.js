@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { fetchApiDraftEvents } from '../../../store/event';
+import DeleteModal from '../../Modals/DeleteModal';
 
 
 function HostingDrafts(){
@@ -35,8 +36,7 @@ function HostingDrafts(){
                                 <td> {event?.date ? event.date.slice(0,10): null}</td>
                                 <td> {event?.name}</td>
                                 <td>Edit</td>
-                                <td>Delete</td>
-
+                                <td><DeleteModal eventId = {event?.id} published = {event.published}/></td>
                             </tr>
                         ))}
                     </tbody>
