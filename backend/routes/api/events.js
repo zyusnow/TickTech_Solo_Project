@@ -142,9 +142,12 @@ router.post('/edit', requireAuth, validateEvent, asyncHandler(async (req, res) =
 router.delete('/:id(\\d+)', asyncHandler(async function (req, res) {
     const eventId = parseInt(req.params.id, 10);
     const event = await Event.findByPk(eventId);
-
-    await event.destroy();
-    return res.json({message: "Deleted Sucessfully."})
+    const hostId = event.hostId;
+    const {id} = req.user
+    if (id === hostId) {
+        await event.destroy();
+        return res.json()
+    }
 }))
 
 

@@ -7,7 +7,8 @@ const GET_PUBLISHED_EVENTS = 'events/getPublishedEvents';
 const GET_DRAFT_EVENTS = 'events/getDraftEvents';
 const ADD_PUBLISHED_EVENT= 'events/addPublishedEvent';
 const ADD_DRAFT_EVENT= 'events/addDraftEvent';
-
+const DELETE_PUBLISHED_EVENT= 'events/deletePublishedEvent'
+const DELETE_DRAFT_EVENT= 'events/deleteDraftEvent'
 
 // action creators
 const getEvents= (events) => {
@@ -53,6 +54,14 @@ const addDraftEvent = (event) => {
     }
 }
 
+const deletePublishedEvent = (id) => {
+    type:DELETE_PUBLISHED_EVENT,
+    id
+}
+const deleteDraftEvent = (id) => {
+    type:DELETE_DRAFT_EVENT,
+    id
+}
 
 // thunk
 export const fetchApiEvents = () => async dispatch => {
@@ -109,7 +118,23 @@ export const addEvent = (event, published) => async dispatch =>{
 }
 
 
-
+export const deleteOldSpot = (id, published) => async dispatch => {
+    const res = await csrfFetch(`/api/events${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+    })
+    if (published) {
+        if (res.ok === true) {
+            dispatch(deletePublishedEvent(id));
+            return res;
+    } else if (!published) {
+        dispatch(deleteDraftEvent(id));
+        return res;
+    }
+    }
+}
 
 
 // reducer
@@ -153,7 +178,16 @@ const eventReducer = (state = initialState, action) => {
             })
             // console.log("reducer", newState)
             return newState;
-
+        case DELETE_DRAFT_EVENT:
+            newState = {...state};
+            delete newState.events[action.id];
+            delete newState.draft[action.id];
+            return newState;
+        case DELETE_PUBLISHED_EVENT:
+            newState = {...state};
+            delete newState.events[action.id];
+            delete newState.published[action.id];
+            return newState;
         default:
             return state;
     }
