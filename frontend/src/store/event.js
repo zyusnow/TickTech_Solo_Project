@@ -131,10 +131,10 @@ export const deleteOldSpot = (id, published) => async dispatch => {
     })
     if (published) {
         if (res.ok === true) {
-            dispatch(deletePublishedEvent(id));
+            dispatch(deletePublishedEvent(+id));
             return res;
     } else if (!published) {
-        dispatch(deleteDraftEvent(id));
+        dispatch(deleteDraftEvent(+id));
         return res;
     }
     }
@@ -148,15 +148,17 @@ const eventReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_EVENTS:
             newState = {...state};
-            action.events.forEach(event => {
-                newState.events[event.id] = event
-            })
-            // console.log("reducer", newState)
+            newState.events = action.events.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
+            // action.events.forEach(event => {
+            //     newState.events[event.id] = event
+            // })
             return newState;
         case GET_EVENT:
             newState = {...state};
-            newState[action.event.id] = action.event
-            // console.log("store", newState)
+            newState.published[action.event.id] = action.event
             return newState;
         case ADD_PUBLISHED_EVENT:
             newState = {...state};
@@ -170,20 +172,25 @@ const eventReducer = (state = initialState, action) => {
             return newState
         case GET_PUBLISHED_EVENTS:
             newState = {...state};
-            action.events.forEach(event => {
-                newState.published[event.id] = event
-            })
-            // console.log("reducer", newState)
+            // action.events.forEach(event => {
+            //     newState.published[event.id] = event
+            // })
+            newState.published = action.events.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
+            // addddd--------------
             return newState;
         case GET_DRAFT_EVENTS:
             newState = {...state};
-            action.events.forEach(event => {
-                newState.draft[event.id] = event
-            })
-            // console.log("reducer", newState)
+            newState.draft = action.events.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
             return newState;
         case DELETE_DRAFT_EVENT:
             newState = {...state};
+
             delete newState.events[action.id];
             delete newState.draft[action.id];
             return newState;

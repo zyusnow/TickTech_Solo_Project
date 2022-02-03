@@ -7,12 +7,12 @@ import './EventsBrowse.css'
 function EventsBrowse() {
     const dispatch = useDispatch();
     const events = useSelector(state => state?.event?.events);
+    const eventsArr = Object.values(events)
+
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(fetchApiEvents());
     }, [dispatch]);
-
-    const eventsArr = Object.values(events)
 
     function shortcontent(str) {
         if (str?.length < 70) return str;
@@ -23,6 +23,8 @@ function EventsBrowse() {
         e.preventDefault();
         navigate(`/events/${id}`);
     }
+
+    console.log("EventBrowse Triggered")
 
     return (
         <>

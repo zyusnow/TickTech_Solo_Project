@@ -9,14 +9,13 @@ import DeleteModal from '../../Modals/DeleteModal';
 function HostingDrafts(){
     const dispatch = useDispatch();
     const events = useSelector(state => state?.event?.draft);
+    const eventsArr = Object.values(events)
     const navigate = useNavigate();
     const sessionUser = useSelector((state) => state?.session?.user);
     useEffect(() => {
         dispatch(fetchApiDraftEvents(sessionUser?.id));
         // pass sessionUser.id that store needs, because store is: fetchApiDraftEvents = (userId)
-    }, [dispatch, events.length]);
-
-    const eventsArr = Object.values(events)
+    }, [dispatch]);
 
     return (
         <>
@@ -31,7 +30,7 @@ function HostingDrafts(){
                         </tr>
                     </thead>
                     <tbody>
-                        {Object.values(eventsArr).map(event => (
+                        {eventsArr.map(event => (
                             <tr key={event?.id}>
                                 <td> {event?.date ? event?.date.slice(0,10): null}</td>
                                 <td> {event?.name}</td>

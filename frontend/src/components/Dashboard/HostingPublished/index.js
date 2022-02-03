@@ -14,7 +14,7 @@ function HostingPublished(){
         // pass sessionUser.id that store needs, because store is: fetchApiDraftEvents = (userId)
     }, [dispatch]);
 
-    const eventsArr = Object.values(events)
+    //const eventsArr = Object.values(events)
 
     return (
         <>
@@ -29,7 +29,7 @@ function HostingPublished(){
                         </tr>
                     </thead>
                     <tbody>
-                        {Object.values(eventsArr).map(event => (
+                        {Object.values(events).map(event => (
                             <tr key={event.id}>
                                 <td>{event?.date.slice(0,10)}</td>
                                 <td>
