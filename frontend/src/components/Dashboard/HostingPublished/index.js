@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { fetchApiPublishedEvents } from '../../../store/event';
+import DeleteModal from '../../Modals/DeleteModal';
 
 
 function HostingPublished(){
@@ -36,7 +37,7 @@ function HostingPublished(){
                                     <Link to={`/events/${event?.id}`}>{event?.name}</Link>
                                 </td>
                                 <td>Edit</td>
-                                <td>Delete</td>
+                                <td><DeleteModal eventId = {event?.id} published = {event?.published}/></td>
 
                             </tr>
                         ))}

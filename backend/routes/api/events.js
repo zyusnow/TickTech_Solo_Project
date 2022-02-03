@@ -121,22 +121,14 @@ router.post('/edit', requireAuth, validateEvent, asyncHandler(async (req, res) =
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
-
-    if (validateErrors.isEmpty()) {
-        const event = await eventToUpdate.update({name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId});
-        return res.json(event)
-    } else {
-        res.json(validateErrors)
+    if (id === hostId) {
+        if (validateErrors.isEmpty()) {
+            const event = await eventToUpdate.update({name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId});
+            return res.json(event)
+        } else {
+            res.json(validateErrors)
+        }
     }
-
-    // if (id === hostId) {
-    // } else {
-    //     const err = new Error('Forbidden');
-    //     err.status = 403;
-    //     err.title = 'User is not authorized';
-    //     err.errors = ['No permission to update.'];
-    //     return next(err);
-    // }
 }))
 
 // ---------------------delete one event---------------------

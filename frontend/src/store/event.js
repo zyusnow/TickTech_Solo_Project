@@ -9,7 +9,8 @@ const ADD_PUBLISHED_EVENT= 'events/addPublishedEvent';
 const ADD_DRAFT_EVENT= 'events/addDraftEvent';
 const DELETE_PUBLISHED_EVENT= 'events/deletePublishedEvent'
 const DELETE_DRAFT_EVENT= 'events/deleteDraftEvent'
-
+const EDIT_PUBLISHED_EVENT = 'events/editPublishedEvent';
+const EDIT_DRAFT_EVENT = 'events/editDraftEvent';
 // action creators
 const getEvents= (events) => {
     return {
@@ -67,6 +68,7 @@ const deleteDraftEvent = (id) => {
     }
 }
 
+
 // thunk
 export const fetchApiEvents = () => async dispatch => {
     // fetch data from db
@@ -92,12 +94,12 @@ export const fetchApiPublishedEvents = (userId) => async dispatch => {
     const events = await res.json()
     dispatch(getPublishedEvents(events))
 }
+
 export const fetchApiDraftEvents = (userId) => async dispatch => {
     const res = await csrfFetch(`/api/users/${userId}/hosting/drafts`)
     const events = await res.json()
     dispatch(getDraftEvents(events))
 }
-
 
 export const addEvent = (event, published) => async dispatch =>{
     const res = await csrfFetch(`/api/events/add`, {
@@ -121,7 +123,6 @@ export const addEvent = (event, published) => async dispatch =>{
       }
 }
 
-
 export const deleteOldSpot = (id, published) => async dispatch => {
     const res = await csrfFetch(`/api/events/${id}`, {
         method: 'DELETE',
@@ -131,12 +132,35 @@ export const deleteOldSpot = (id, published) => async dispatch => {
     })
     if (published) {
         if (res.ok === true) {
-            dispatch(deletePublishedEvent(+id));
+            await dispatch(deletePublishedEvent(+id));
             return res;
     } else if (!published) {
         dispatch(deleteDraftEvent(+id));
         return res;
     }
+    }
+}
+
+export const  editEvent = (event, eventId, published) => async dispatch => {
+    const res = await csrfFetch((`/api/spots/${eventId}/edit`,{
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(event)
+    }))
+    const resBody = await res.json()
+
+    if (!resBody.errors) {
+      const data = resBody;
+      if (published) {
+        dispatch(addPublishedEvent(data));
+      } else {
+        dispatch(addDraftEvent(data));
+      }
+      return data
+    } else {
+      return resBody;
     }
 }
 
