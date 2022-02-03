@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Navigate, NavLink } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import { fetchApiEvent } from '../../../store/event';
+import { editEvent, fetchApiEvent } from '../../../store/event';
 import { fetchApiTypes } from '../../../store/type';
 import { editOldVenue } from '../../../store/venue';
 
@@ -19,8 +19,12 @@ function EventEdit(){
     const types = useSelector(state => state.type.types);
     const typesArr = Object.values(types)
 
+    console.log("edit", event.hostId)
 
     useEffect(() => {
+        if (sessionUser.id !== event.hostId) {
+            return <Navigate to={`/events/${event.id}`} />
+        }
         dispatch(fetchApiEvent(eventId));
     }, [dispatch],eventId);
 
@@ -30,9 +34,6 @@ function EventEdit(){
         }
     },[])
 
-    if (sessionUser.id !== event.hostId) {
-        return <Navigate to={`/events/${event.id}`} />
-    }
 
     const [name, setName] = useState(event?.name);
     const [date, setDate] = useState(event?.date);
@@ -96,7 +97,7 @@ function EventEdit(){
 
 
             let errEvent = [];
-            const data2 = await dispatch(addEvent(newEvent))
+            const data2 = await dispatch(editEvent(newEvent))
             console.log("AddEvent Component",data2)
             const errors2 = data2.errors;
             if (errors2) { // if data has errors inside
