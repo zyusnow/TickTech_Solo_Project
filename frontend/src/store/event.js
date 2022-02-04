@@ -84,7 +84,7 @@ export const fetchApiEvent = (id) => async dispatch => {
     const res = await csrfFetch(`/api/events/${+id}`);
     if (res.ok) {
         const event = await res.json();
-        dispatch(getEvent(event))
+        dispatch(getEvent([event]))
         // console.log("store", event)
     }
 }
@@ -182,7 +182,12 @@ const eventReducer = (state = initialState, action) => {
             return newState;
         case GET_EVENT:
             newState = {...state};
-            newState.published[action.event.id] = action.event
+            newState.events = action.event.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
+            //newState.events[action.event.id] = action.event
+
             return newState;
         case ADD_PUBLISHED_EVENT:
             newState = {...state};
