@@ -120,10 +120,10 @@ router.post('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (r
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
-    console.log("editroutes",hostId)
-    console.log("editrouteseventId",eventId)
-    console.log("editroutesevent",eventToUpdate)
-    console.log("editroutes",hostId)
+    // console.log("editroutes",hostId)
+    // console.log("editrouteseventId",eventId)
+    // console.log("editroutesevent",eventToUpdate)
+    // console.log("editroutes",hostId)
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
     if (id === hostId) {
         if (validateErrors.isEmpty()) {

@@ -11,7 +11,8 @@ module.exports = {
       return queryInterface.bulkInsert('Events', [
         {
         name: "Cybersecurity Meetup",
-        date: "2022-02-22 19:00:00",
+        date: "2022-02-22T19:30:00.000Z",
+        // date: "2022-02-22 19:00:00",
         capacity:50,
         description:"A talk about Cybersecurity recent trading research.",
         virtual:false,
@@ -23,7 +24,8 @@ module.exports = {
         },
         {
         name: "Blockchain Workshops",
-        date: "2022-02-28 18:00:00",
+        // date: "2022-02-28 18:00:00",
+        date: "2022-03-28T18:30:00.000Z",
         capacity:200,
         description:"This meetup is for anyone who is interested in blockchain technology. All levels of experience are warmly welcomed.",
         virtual:true,
@@ -35,7 +37,8 @@ module.exports = {
         },
         {
         name: "2022 Spring Tech Job Fair",
-        date: "2022-03-12 15:00:00",
+        // date: "2022-03-12 15:00:00",
+        date: "2022-03-12T15:30:00.000Z",
         capacity:200,
         description:"Join us. Find 100+ resources here. ",
         virtual:false,
@@ -47,7 +50,8 @@ module.exports = {
         },
         {
         name: "Tech Coffee Chat",
-        date: "2022-03-18 10:00:00",
+        // date: "2022-03-18 10:00:00",
+        date: "2022-04-12T18:30:00.000Z",
         capacity:60,
         description:"Morning meetup with best tech geeks in Seattle downtown",
         virtual:false,
@@ -59,7 +63,8 @@ module.exports = {
         },
         {
         name: "Seattle Tech Career",
-        date: "2022-04-20 16:30:00",
+        // date: "2022-04-20 16:30:00",
+        date: "2022-04-20T16:30:00.000Z",
         capacity:500,
         description:"We will be hosting a Tech Career Fair with our hiring partners from fast growing startups and Fortune 500 companies in technology.  There will be a focus on helping companies achieve their diversity and inclusivity initiative with more diverse candidates to their talent pool. Available roles that our hiring companies are looking to fill are of the following:Software Engineering,Product Management, Data Scientist, AI/Machine Learning Engineer, Data Analyst, UI/UX Design, Sales",
         virtual:false,
@@ -71,7 +76,8 @@ module.exports = {
         },
         {
         name: "Network Hacking 101",
-        date: "2022-04-17 20:00:00",
+        // date: "2022-04-17 20:00:00",
+        date: "2022-04-17T20:30:00.000Z",
         capacity:100,
         description:"A talk about Cybersecurity recent trading research.",
         virtual:false,
