@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { Link, Navigate, NavLink, useNavigate, useParams } from "react-router-dom";
 import { fetchApiDraftEvents } from '../../../store/event';
 import DeleteModal from '../../Modals/DeleteModal';
 
@@ -16,6 +16,8 @@ function HostingDrafts(){
         dispatch(fetchApiDraftEvents(sessionUser?.id));
         // pass sessionUser.id that store needs, because store is: fetchApiDraftEvents = (userId)
     }, [dispatch]);
+
+
 
     return (
         <>
@@ -34,7 +36,7 @@ function HostingDrafts(){
                             <tr key={event?.id}>
                                 <td> {event?.date ? event?.date.slice(0,10): null}</td>
                                 <td> {event?.name}</td>
-                                <td>Edit</td>
+                                <td ><NavLink className="edit_btn" to={`/events/${event?.id}/edit`}>Edit</NavLink></td>
                                 <td><DeleteModal eventId = {event?.id} published = {event?.published}/></td>
                             </tr>
                         ))}

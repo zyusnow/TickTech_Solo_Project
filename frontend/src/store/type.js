@@ -1,7 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-const GET_TYPES = 'events/getType';
-
+const GET_TYPES = 'events/getTypes';
 // action creators
 const getTypes= (types) => {
     return {
@@ -9,6 +8,7 @@ const getTypes= (types) => {
         types
     }
 }
+
 
 // thunk
 export const fetchApiTypes = () => async dispatch => {
@@ -20,6 +20,7 @@ export const fetchApiTypes = () => async dispatch => {
     }
 }
 
+
 // reducer
 const initialState = { types: {} };
 const typeReducer = (state = initialState, action) => {
@@ -27,10 +28,13 @@ const typeReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_TYPES:
             newState = {...state};
-            action.types.forEach(type => {
-                newState.types[type.id] = type
-            })
-            console.log("type reducer", newState)
+            // action.types.forEach(type => {
+            //     newState.types[type.id] = type
+            // })
+            newState.types = action.types.reduce((types, type) => {
+                types[type.id] = type;
+                return types;
+            }, {});
             return newState;
         default:
             return state;

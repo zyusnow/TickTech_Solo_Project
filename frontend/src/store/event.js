@@ -26,7 +26,6 @@ const getEvent= (event) => {
     }
 }
 
-
 const getPublishedEvents = (events) => {
     return {
         type: GET_PUBLISHED_EVENTS,
@@ -84,7 +83,7 @@ export const fetchApiEvent = (id) => async dispatch => {
     const res = await csrfFetch(`/api/events/${+id}`);
     if (res.ok) {
         const event = await res.json();
-        dispatch(getEvent([event]))
+        dispatch(getEvent(event))
         // console.log("store", event)
     }
 }
@@ -182,11 +181,11 @@ const eventReducer = (state = initialState, action) => {
             return newState;
         case GET_EVENT:
             newState = {...state};
-            newState.events = action.event.reduce((events, event) => {
-                events[event.id] = event;
-                return events;
-            }, {});
-            //newState.events[action.event.id] = action.event
+            // newState.events = action.event.reduce((events, event) => {
+            //     events[event.id] = event;
+            //     return events;
+            // }, {});
+            newState.events[action.event.id] = action.event
 
             return newState;
         case ADD_PUBLISHED_EVENT:
@@ -201,14 +200,10 @@ const eventReducer = (state = initialState, action) => {
             return newState
         case GET_PUBLISHED_EVENTS:
             newState = {...state};
-            // action.events.forEach(event => {
-            //     newState.published[event.id] = event
-            // })
             newState.published = action.events.reduce((events, event) => {
                 events[event.id] = event;
                 return events;
             }, {});
-            // addddd--------------
             return newState;
         case GET_DRAFT_EVENTS:
             newState = {...state};
@@ -219,7 +214,6 @@ const eventReducer = (state = initialState, action) => {
             return newState;
         case DELETE_DRAFT_EVENT:
             newState = {...state};
-
             delete newState.events[action.id];
             delete newState.draft[action.id];
             return newState;
@@ -228,6 +222,8 @@ const eventReducer = (state = initialState, action) => {
             delete newState.events[action.id];
             delete newState.published[action.id];
             return newState;
+        case EDIT_PUBLISHED_EVENT:
+            
         default:
             return state;
     }

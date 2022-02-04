@@ -10,7 +10,7 @@ function EventBrowse() {
     const eventId = +id;  // change it to a number
     const sessionUser = useSelector(state => state?.session?.user);
     const eventObj = useSelector(state => state?.event);  // get spot: spotReducer(in store index.js) 's state
-    const event = eventObj.published[eventId];
+    const event = eventObj.events[eventId];
 
 
     useEffect(() => {

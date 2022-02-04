@@ -83,10 +83,12 @@
   background-color: transparent;
   font-size: 16px;
   font-weight: 200;
+  text-decoration: underline;
 }
 
 .delete_btn:hover{
   cursor: pointer;
+  color:var(--body_highlight_orange);
 }
 
 .delete_confirm_container{
