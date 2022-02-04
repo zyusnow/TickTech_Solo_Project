@@ -10,4 +10,13 @@ router.get('/',asyncHandler(async function (req, res) {
     return res.json(types)
 }))
 
+router.get('/:id(\\d+)',asyncHandler(async function (req, res) {
+    const typeId = parseInt(req.params.id, 10);
+    const type = await Type.findOne({
+        where: { id: typeId },
+        include: [Venue, Type, User],
+    })
+    return res.json(type);
+}))
+
 module.exports = router;
