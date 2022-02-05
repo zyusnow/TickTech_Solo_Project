@@ -45,6 +45,7 @@ function HasEvent({event}){
 
             if (venueId) {
                 const data = await dispatch(editOldVenue(venue, venueId));
+
                 let errVenue = [];
                 const errors = data.errors;
                 if (errors) { // if data has errors inside
@@ -68,6 +69,7 @@ function HasEvent({event}){
                 }
             }
         }
+
         // console.log(venueId);
         const event = {
             name: name ? name : 'draft event',

@@ -62,19 +62,7 @@ router.get('/:id(\\d+)',asyncHandler(async function (req, res) {
     return res.json(venue)
 }))
 
-// ---------------------put one venue---------------------
-router.put('/:id(\\d+)/edit',asyncHandler(async function (req, res) {
-    const venueId = parseInt(req.params.venueId, 10);
-    const venue = await Venue.findByPk(venueId);
-    const {name, address, city, state, zipCode, published} = req.body;
-    if (validateErrors.isEmpty()) {
-        await venue.update({name, address, city, state, zipCode, published})
-        const venue = await Venue.findByPk(venueId);
-        res.json(venue)
-    } else {
-        return res.json(validateErrors)
-    }
-}))
+
 
 // ---------------------add one venue---------------------
 router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) => {
@@ -89,12 +77,11 @@ router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) =>
     }
 }))
 
-// ---------------------edit one venue---------------------
-router.put('/:id(\\d+/edit)',asyncHandler(async function (req, res) {
-    const venueId = parseInt(req.params.venueId, 10);
+// ---------------------put one venue---------------------
+router.put('/:id(\\d+)/edit',asyncHandler(async function (req, res) {
+    const venueId = parseInt(req.params.id, 10);
+    const venue = await Venue.findByPk(venueId);
     const {name, address, city, state, zipCode, published} = req.body;
-
-
     if (validateErrors.isEmpty()) {
         await venue.update({name, address, city, state, zipCode, published})
         const venue = await Venue.findByPk(venueId);
@@ -102,7 +89,7 @@ router.put('/:id(\\d+/edit)',asyncHandler(async function (req, res) {
     } else {
         return res.json(validateErrors)
     }
-
 }))
+
 
 module.exports = router;
