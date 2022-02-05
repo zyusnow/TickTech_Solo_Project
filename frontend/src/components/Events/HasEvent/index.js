@@ -123,7 +123,7 @@ function HasEvent({event, eventId}){
                         <label htmlFor='date'>* Event Time:</label>
                         <input
                             type="datetime-local"
-                            value={date.split('Z')[0]}
+                            value={date !== null ? date.split('Z')[0]: null}
                             onChange={(e) => setDate(e.target.value)}
                             // required
                             name='date'

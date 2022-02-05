@@ -151,7 +151,7 @@ export const  editEvent = (event, eventId, published) => async dispatch => {
         },
         body: JSON.stringify(event)
     });
-    
+
     const resBody = await res.json()
     console.log("eventstore", resBody)
     if (!resBody.errors) {
@@ -208,10 +208,19 @@ const eventReducer = (state = initialState, action) => {
                 events[event.id] = event;
                 return events;
             }, {});
+            newState.events = action.events.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
+
             return newState;
         case GET_DRAFT_EVENTS:
             newState = {...state};
             newState.draft = action.events.reduce((events, event) => {
+                events[event.id] = event;
+                return events;
+            }, {});
+            newState.events = action.events.reduce((events, event) => {
                 events[event.id] = event;
                 return events;
             }, {});
