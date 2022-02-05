@@ -222,8 +222,6 @@ const eventReducer = (state = initialState, action) => {
             delete newState.events[action.id];
             delete newState.published[action.id];
             return newState;
-        case EDIT_PUBLISHED_EVENT:
-            
         default:
             return state;
     }

@@ -62,6 +62,20 @@ router.get('/:id(\\d+)',asyncHandler(async function (req, res) {
     return res.json(venue)
 }))
 
+// ---------------------put one venue---------------------
+router.put('/:id(\\d+)/edit',asyncHandler(async function (req, res) {
+    const venueId = parseInt(req.params.venueId, 10);
+    const venue = await Venue.findByPk(venueId);
+    const {name, address, city, state, zipCode, published} = req.body;
+    if (validateErrors.isEmpty()) {
+        await venue.update({name, address, city, state, zipCode, published})
+        const venue = await Venue.findByPk(venueId);
+        res.json(venue)
+    } else {
+        return res.json(validateErrors)
+    }
+}))
+
 // ---------------------add one venue---------------------
 router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) => {
     const {name, address, city, state, zipCode, published} = req.body;
@@ -76,7 +90,7 @@ router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) =>
 }))
 
 // ---------------------edit one venue---------------------
-router.get('/:id(\\d+/edit)',asyncHandler(async function (req, res) {
+router.put('/:id(\\d+/edit)',asyncHandler(async function (req, res) {
     const venueId = parseInt(req.params.venueId, 10);
     const {name, address, city, state, zipCode, published} = req.body;
 

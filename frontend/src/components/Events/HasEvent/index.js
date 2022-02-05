@@ -110,7 +110,7 @@ function HasEvent({event}){
                         {venueErrors.concat(eventErrors).map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
                     <div className="form_content">
-                        <label htmlFor='name'>Event Name:</label>
+                        <label htmlFor='name'>* Event Name:</label>
                         <input
                             type="text"
                             value={name}
@@ -120,7 +120,7 @@ function HasEvent({event}){
                         />
                     </div>
                     <div className="form_content">
-                        <label htmlFor='date'>Event Time:</label>
+                        <label htmlFor='date'>* Event Time:</label>
                         <input
                             type="datetime-local"
                             value={date.split('Z')[0]}
@@ -130,7 +130,7 @@ function HasEvent({event}){
                         />
                     </div>
                     <div className="form_content">
-                        <label htmlFor='type'>Event Type:</label>
+                        <label htmlFor='type'>* Event Type:</label>
                         <select
                             type="text"
                             // required
@@ -144,7 +144,7 @@ function HasEvent({event}){
                         </select>
                     </div>
                     <div className="form_content">
-                        <label htmlFor='capacity'>Capacity:</label>
+                        <label htmlFor='capacity'>* Capacity:</label>
                         <input
                             type="number"
                             value={capacity}
@@ -154,7 +154,7 @@ function HasEvent({event}){
                         />
                     </div>
                     <div className="form_content">
-                        <label htmlFor='description'>Description:</label>
+                        <label htmlFor='description'>* Description:</label>
                         <textarea
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
@@ -163,7 +163,7 @@ function HasEvent({event}){
                         />
                     </div>
                     <div className="form_content">
-                        <label htmlFor='imgUrl'>Image Link</label>
+                        <label htmlFor='imgUrl'>* Image Link</label>
                         <input
                             type="text"
                             value={imgUrl}
