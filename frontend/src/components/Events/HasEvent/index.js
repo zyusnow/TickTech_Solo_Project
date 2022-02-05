@@ -6,7 +6,7 @@ import { addNewVenue, editOldVenue } from '../../../store/venue';
 
 
 
-function HasEvent({event}){
+function HasEvent({event, eventId}){
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const types = useSelector(state => state?.type?.types);
@@ -53,11 +53,10 @@ function HasEvent({event}){
                     const flatErrList = [...errList];  // flat
                     flatErrList.map(each => errVenue.push(each.msg))  // make it in an array
                     setVenueErrors(errVenue)  // right now get errors
-                    // venueHasError = true;
                 }
             } else {
                 const data = await dispatch(addNewVenue(venue, published));
-                venueId = data.id
+                let venueId = data.id
                 let errVenue = [];
                 const errors = data.errors;
                 if (errors) { // if data has errors inside
@@ -65,13 +64,12 @@ function HasEvent({event}){
                     const flatErrList = [...errList];  // flat
                     flatErrList.map(each => errVenue.push(each.msg))  // make it in an array
                     setVenueErrors(errVenue)  // right now get errors
-                    // venueHasError = true;
                 }
             }
         }
 
         // console.log(venueId);
-        const event = {
+        const editedEvent = {
             name: name ? name : 'draft event',
             date: date ? date: null,
             capacity:capacity ? capacity : null,
@@ -86,8 +84,8 @@ function HasEvent({event}){
 
 
         let errEvent = [];
-        const data2 = await dispatch(editEvent(event))
-        console.log("EditEvent Component",data2)
+        const data2 = await dispatch(editEvent(editedEvent, eventId, published))
+        // console.log("EditEvent Component",data2)
         const errors2 = data2?.errors;
         if (errors2) { // if data has errors inside
             // venueHasError === true

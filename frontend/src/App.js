@@ -17,6 +17,7 @@ import Hosting from "./components/Dashboard/Hosting";
 import Attending from "./components/Dashboard/Attending";
 import Saved from "./components/Dashboard/Saved";
 import EventEdit from "./components/Events/EditEvent";
+
 import './app.css'
 function App() {
   const dispatch = useDispatch();

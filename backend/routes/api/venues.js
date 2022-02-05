@@ -80,10 +80,12 @@ router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) =>
 // ---------------------put one venue---------------------
 router.put('/:id(\\d+)/edit',asyncHandler(async function (req, res) {
     const venueId = parseInt(req.params.id, 10);
-    const venue = await Venue.findByPk(venueId);
+    const venueToUpdate = await Venue.findByPk(venueId);
     const {name, address, city, state, zipCode, published} = req.body;
+
+    const validateErrors = validationResult(req);
     if (validateErrors.isEmpty()) {
-        await venue.update({name, address, city, state, zipCode, published})
+        await venueToUpdate.update({name, address, city, state, zipCode, published});
         const venue = await Venue.findByPk(venueId);
         res.json(venue)
     } else {

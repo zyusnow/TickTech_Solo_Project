@@ -60,9 +60,8 @@ export const editOldVenue = (venue, venueId) => async dispatch => {
         method: 'PUT',
         body: JSON.stringify(venue)
     });
-    console.log("store",resBody)
     const resBody = await res.json()
-
+    console.log("store",resBody)
     if (!resBody.errors) {
       const venue = resBody;
       await dispatch(editVenue(venue));

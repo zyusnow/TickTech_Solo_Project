@@ -115,15 +115,16 @@ router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) =>
 }));
 
 // ---------------------update one event---------------------
-router.post('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (req, res) => {
+    const validateErrors = validationResult(req);
     const { id } = req.user;
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
-    // console.log("editroutes",hostId)
-    // console.log("editrouteseventId",eventId)
-    // console.log("editroutesevent",eventToUpdate)
-    // console.log("editroutes",hostId)
+    console.log("editroutes",hostId)
+    console.log("editrouteseventId",eventId)
+    console.log("editroutesevent",eventToUpdate)
+    console.log("editroutes",hostId)
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
     if (id === hostId) {
         if (validateErrors.isEmpty()) {

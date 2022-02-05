@@ -122,7 +122,7 @@ export const addEvent = (event, published) => async dispatch =>{
       }
 }
 
-export const deleteOldSpot = (id, published) => async dispatch => {
+export const deleteOldEvent = (id, published) => async dispatch => {
     const res = await csrfFetch(`/api/events/${id}`, {
         method: 'DELETE',
         headers: {
@@ -141,15 +141,19 @@ export const deleteOldSpot = (id, published) => async dispatch => {
 }
 
 export const  editEvent = (event, eventId, published) => async dispatch => {
-    const res = await csrfFetch((`/api/spots/${eventId}/edit`,{
+    console.log(event);
+    console.log(eventId);
+    console.log(published);
+    const res = await csrfFetch(`/api/events/${eventId}/edit`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(event)
-    }))
+    });
+    
     const resBody = await res.json()
-
+    console.log("eventstore", resBody)
     if (!resBody.errors) {
       const data = resBody;
       if (published) {

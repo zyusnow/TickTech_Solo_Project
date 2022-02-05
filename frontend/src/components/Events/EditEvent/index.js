@@ -31,7 +31,7 @@ function EventEdit(){
     },[])
 
     if (event){
-        return <HasEvent event={event}/>;
+        return <HasEvent event={event} eventId={eventId}/>;
     }
     else{
         return (<></>);
