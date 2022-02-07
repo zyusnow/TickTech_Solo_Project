@@ -25,15 +25,14 @@ table td{
 
 }
 
-.edit_btn{
+.remove_btn{
     color:var(--body_white);
     text-decoration: underline;
-    padding: 5px 0px;
     box-sizing: border-box;
     font-weight: 400;
 }
 
-.edit_btn:hover{
+.remove_btn:hover{
     cursor: pointer;
     color:var(--body_highlight_orange);
   }

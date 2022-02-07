@@ -50,7 +50,7 @@ function Interest(){
                                     <tr key={like.id}>
                                         <td>{like?.Event.date.slice(0,10)}</td>
                                         <td><NavLink className="edit_btn" to={`/events/${like?.Event.id}`}>{like?.Event.name}</NavLink></td>
-                                        <td ><Remove likeId = {like?.id}/></td>
+                                        <td className='remove_btn' ><Remove likeId = {like?.id}/></td>
                                     </tr>
                                 ))}
                             </tbody>
