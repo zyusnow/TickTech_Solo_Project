@@ -1,0 +1,39 @@
+#interest{
+    display: flex;
+}
+
+.nav_sub_title_interest{
+    font-size: 1.8em;
+    font-weight: 500;
+    color: var(--body_hight_green);
+}
+
+table{
+    background-color: var(--card_bg);
+    width: 100%;
+}
+
+table th{
+    padding: 10px;
+    font-weight: 600;
+    text-align: left;
+}
+
+table td{
+    padding: 10px;
+    color:white
+
+}
+
+.edit_btn{
+    color:var(--body_white);
+    text-decoration: underline;
+    padding: 5px 0px;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+.edit_btn:hover{
+    cursor: pointer;
+    color:var(--body_highlight_orange);
+  }

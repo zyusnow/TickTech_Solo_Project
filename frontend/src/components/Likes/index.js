@@ -20,7 +20,7 @@ function Like({eventId}) {
         setUpdateInterestdCount('')
     }, [dispatch, updateInterestCount])
 
-    console.log(eventId)
+
     const likeEvent = e => {
         return dispatch(addLikeByUser(userId, eventId))
             .then(() => {
