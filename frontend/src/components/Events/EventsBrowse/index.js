@@ -24,7 +24,7 @@ function EventsBrowse() {
         navigate(`/events/${id}`);
     }
 
-    console.log("EventBrowse Triggered")
+    // console.log("EventBrowse Triggered")
 
     return (
         <>

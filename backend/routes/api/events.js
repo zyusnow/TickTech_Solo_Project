@@ -88,10 +88,10 @@ router.get('/:id(\\d+)', asyncHandler(async function (req, res) {
 
 // ---------------------create one event---------------------
 router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
-    console.log(req);
+
     const { id } = req.user;
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
-    console.log(req.body);
+
     const validateErrors = validationResult(req);
     if (validateErrors.isEmpty()) {
         const event = await Event.create({
@@ -121,10 +121,10 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
-    console.log("editroutes",hostId)
-    console.log("editrouteseventId",eventId)
-    console.log("editroutesevent",eventToUpdate)
-    console.log("editroutes",hostId)
+    // console.log("editroutes",hostId)
+    // console.log("editrouteseventId",eventId)
+    // console.log("editroutesevent",eventToUpdate)
+    // console.log("editroutes",hostId)
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
     if (id === hostId) {
         if (validateErrors.isEmpty()) {
@@ -144,7 +144,6 @@ router.delete('/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async funct
     const hostId = event.hostId;
     // console.log("hihi", req.session)
     const { id } = req.user;
-    console.log("deleteroute_id", id)
     if (id === hostId) {
         await event.destroy();
         return res.json()

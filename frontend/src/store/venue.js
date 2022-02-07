@@ -44,7 +44,7 @@ export const addNewVenue = (venue) => async dispatch => {
     });
 
     const resBody = await res.json();
-    console.log(resBody);
+    // console.log(resBody);
 
     if (!resBody.errors) {
         const data = resBody;
@@ -61,7 +61,7 @@ export const editOldVenue = (venue, venueId) => async dispatch => {
         body: JSON.stringify(venue)
     });
     const resBody = await res.json()
-    console.log("store",resBody)
+    // console.log("store",resBody)
     if (!resBody.errors) {
       const venue = resBody;
       await dispatch(editVenue(venue));

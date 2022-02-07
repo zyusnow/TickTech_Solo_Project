@@ -11,8 +11,11 @@ function DeleteModal({eventId, published}) {
         const sessionUser = useSelector((state) => state?.session?.user);
         const handleDelete = (e) => {
             e.preventDefault();
-            dispatch(deleteOldEvent(eventId, published));
-            setShowModal(false)
+            const delete_event = dispatch(deleteOldEvent(eventId, published));
+            setShowModal(false);
+            if (delete_event) {
+                window.location.reload()
+            }
         }
 
         return (

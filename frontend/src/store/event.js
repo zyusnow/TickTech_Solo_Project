@@ -141,9 +141,9 @@ export const deleteOldEvent = (id, published) => async dispatch => {
 }
 
 export const  editEvent = (event, eventId, published) => async dispatch => {
-    console.log(event);
-    console.log(eventId);
-    console.log(published);
+    // console.log(event);
+    // console.log(eventId);
+    // console.log(published);
     const res = await csrfFetch(`/api/events/${eventId}/edit`, {
         method: 'PUT',
         headers: {
@@ -153,7 +153,6 @@ export const  editEvent = (event, eventId, published) => async dispatch => {
     });
 
     const resBody = await res.json()
-    console.log("eventstore", resBody)
     if (!resBody.errors) {
       const data = resBody;
       if (published) {

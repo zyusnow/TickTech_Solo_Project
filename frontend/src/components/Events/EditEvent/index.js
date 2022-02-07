@@ -31,7 +31,6 @@ function EventEdit(){
     },[])
 
     if (event){
-        console.log(event);
         return <HasEvent event={event} eventId={eventId}/>;
     }
     else{

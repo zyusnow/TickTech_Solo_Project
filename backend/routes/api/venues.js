@@ -60,7 +60,6 @@ router.get('/:id(\\d+)',asyncHandler(async function (req, res) {
 // ---------------------add one venue---------------------
 router.post('/add', requireAuth, validateVenue, asyncHandler(async (req, res) => {
     const {name, address, city, state, zipCode, published} = req.body;
-    console.log(req.body);
     const validateErrors = validationResult(req);
     if (validateErrors.isEmpty()) {
         const venue = await Venue.create({name, address, city, state, zipCode, published});

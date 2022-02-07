@@ -16,7 +16,7 @@ export const fetchApiTypes = () => async dispatch => {
     if (res.ok) {
         const types = await res.json();
         dispatch(getTypes(types))
-        console.log("store", types)
+        // console.log("store", types)
     }
 }
 
