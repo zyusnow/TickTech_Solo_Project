@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/',asyncHandler(async function (req, res) {
     const likes = await Like.findAll();
-    return res.json({likes})
+    return res.json(likes)
 }))
 
 router.post("/", asyncHandler(async function (req, res) {
@@ -14,7 +14,7 @@ router.post("/", asyncHandler(async function (req, res) {
       userId,
       eventId,
     })
-    return res.json({like})
+    return res.json(like)
 }))
 
 router.delete("/:id(\\d+)", asyncHandler(async function (req, res) {

@@ -28,9 +28,6 @@ const typeReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_TYPES:
             newState = {...state};
-            // action.types.forEach(type => {
-            //     newState.types[type.id] = type
-            // })
             newState.types = action.types.reduce((types, type) => {
                 types[type.id] = type;
                 return types;

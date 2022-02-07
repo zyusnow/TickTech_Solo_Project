@@ -5,13 +5,16 @@ import eventReducer from "./event";
 import sessionReducer from './session';
 import typeReducer from "./type";
 import venueReducer from "./venue";
+import likeReducer from "./like";
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   event: eventReducer,
   type: typeReducer,
-  venue: venueReducer
+  venue: venueReducer,
+  like: likeReducer
+
 });
 
 let enhancer;

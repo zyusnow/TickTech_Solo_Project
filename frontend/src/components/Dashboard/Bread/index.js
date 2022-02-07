@@ -21,10 +21,10 @@ function Bread(){
           navigate(`/users/attending`)
         }
       }
-    const goToSaved = (e) => {
+    const goToInterest = (e) => {
         e.preventDefault();
         if(sessionUser) {
-          navigate(`/users/saved`)
+          navigate(`/users/interest`)
         }
       }
 
@@ -40,7 +40,7 @@ function Bread(){
                             <button id="content_btn" onClick={goToAttending}>Attending</button>
                         </li>
                         <li className='da_content_li'>
-                            <button id="content_btn" onClick={goToSaved}>Saved</button>
+                            <button id="content_btn" onClick={goToInterest}>Interests</button>
                         </li>
                     </ul>
                 </div>

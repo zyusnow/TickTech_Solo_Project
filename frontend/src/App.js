@@ -15,7 +15,7 @@ import EventBrowse from "./components/Events/EventBrowse";
 import AddEvent from "./components/Events/AddEvent";
 import Hosting from "./components/Dashboard/Hosting";
 import Attending from "./components/Dashboard/Attending";
-import Saved from "./components/Dashboard/Saved";
+import Interest from "./components/Dashboard/Interest";
 import EventEdit from "./components/Events/EditEvent";
 
 import './app.css'
@@ -41,7 +41,7 @@ function App() {
               <Route path='/events/:id' element={<EventBrowse />} />
               <Route path='/events/:id/edit' element={<EventEdit />} />
               <Route path='/users/hosting/*' element={<Hosting />} />
-              <Route path='/users/saved' element={<Saved />} />
+              <Route path='/users/interest' element={<Interest />} />
               <Route path='/users/attending' element={<Attending />} />
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />

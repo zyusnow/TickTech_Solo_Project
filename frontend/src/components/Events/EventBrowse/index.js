@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchApiEvent } from '../../../store/event';
+import Like from '../../Likes';
 import './EventBrowse.css'
+
+
 
 function EventBrowse() {
     const dispatch = useDispatch();
@@ -12,10 +15,11 @@ function EventBrowse() {
     const eventObj = useSelector(state => state?.event);  // get spot: spotReducer(in store index.js) 's state
     const event = eventObj.events[eventId];
 
-
     useEffect(() => {
         dispatch(fetchApiEvent(eventId));
     }, [dispatch],eventId);
+
+
 
     return (
         <>
@@ -28,6 +32,7 @@ function EventBrowse() {
                     <div className={`type1 type_${event?.Type?.id}`}>{event?.Type?.name}</div>
                     <div className='content date_title'>{event?.date}</div>
                     <div className='title'>{event?.name}</div>
+                    <Like eventId={eventId}/>
                 </div>
 
                 <div className='event_card container_leftDown'>
