@@ -1,0 +1,18 @@
+.like_container{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    margin-top:3em;
+    margin-left:1.8em;
+}
+
+.fa-bookmark{
+    color: var(--body_hight_green);
+}
+
+.like_status{
+    color: var(--body_lightgrey);
+    font-style: oblique;
+}
+
+

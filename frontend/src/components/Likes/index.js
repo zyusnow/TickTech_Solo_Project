@@ -1,7 +1,7 @@
 import {fetchApiLikes, addLikeByUser, deleteLikeByUser} from '../../store/like'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-
+import './Likes.css'
 
 function Like({eventId}) {
     const dispatch = useDispatch()
@@ -12,14 +12,15 @@ function Like({eventId}) {
     const likesArr = Object.values(likes);
     const eventLikes = likesArr.filter(like => like.eventId === +eventId)
     const liked = eventLikes.find(like => like.userId === +userId)
-    console.log(liked)
+
+
 
     useEffect(() => {
         dispatch(fetchApiLikes())
         setUpdateInterestdCount('')
     }, [dispatch, updateInterestCount])
 
-
+    console.log(eventId)
     const likeEvent = e => {
         return dispatch(addLikeByUser(userId, eventId))
             .then(() => {
@@ -39,20 +40,20 @@ function Like({eventId}) {
     let interestIcon;
     if (liked) {
         interestIcon = (
-            <i class="far fa-bookmark" onClick={unlikeEvent}></i>
+            <i className="fas fa-bookmark" onClick={unlikeEvent}></i>
         )
       } else {
         interestIcon = (
-            <i class="fas fa-bookmark liked" onClick={likeEvent}></i>
+            <i className="far fa-bookmark" onClick={likeEvent}></i>
         )
       }
 
     return (
         <>
-            <div>
+            <div className='like_container'>
                 <div className="interestIcon">{interestIcon}</div>
                 <span>
-                    {liked && <div>Added to interests</div>}
+                    {liked && <div className='like_status'>Added to interests</div>}
                     {!liked && <div>Add to interests</div>}
                 </span>
             </div>
