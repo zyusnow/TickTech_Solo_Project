@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, useNavigate } from "react-router-dom";
 import { fetchApiEvents } from '../../../store/event';
+import { fetchApiTypes } from '../../../store/type';
 import './EventsBrowse.css'
 
 function EventsBrowse() {
@@ -9,9 +10,14 @@ function EventsBrowse() {
     const events = useSelector(state => state?.event?.events);
     const eventsArr = Object.values(events)
 
+    const types = useSelector(state => state.type.types);
+    const typesArr = Object.values(types);
+    console.log(typesArr)
+
     const navigate = useNavigate();
     useEffect(() => {
         dispatch(fetchApiEvents());
+        dispatch(fetchApiTypes())
     }, [dispatch]);
 
     function shortcontent(str) {
