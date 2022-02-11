@@ -10,7 +10,7 @@
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www"
   },
-  
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -34,5 +34,8 @@
   "devDependencies": {
     "dotenv-cli": "^4.1.1",
     "nodemon": "^2.0.15"
+  },
+  "overrides": {
+    "mini-css-extract-plugin": "2.4.5"
   }
 }
