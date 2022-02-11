@@ -1,7 +1,7 @@
 {
 "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
-    "install": "npm i -D --save-exact mini-css-extract-plugin@2.4.5 && npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend && npm i -D --save-exact mini-css-extract-plugin@2.4.5",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "sequelize": "npm run --prefix backend sequelize",
