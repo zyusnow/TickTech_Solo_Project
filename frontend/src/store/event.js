@@ -107,7 +107,7 @@ export const addEvent = (event, published) => async dispatch =>{
     });
 
     const resBody = await res.json();
-    console.log("events.js->addEvent:resbody",resBody)
+    // console.log("events.js->addEvent:resbody",resBody)
     if (!resBody.errors) {
         const data = resBody;
         if (published) {

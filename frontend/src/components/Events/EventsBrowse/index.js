@@ -12,7 +12,7 @@ function EventsBrowse() {
 
     const types = useSelector(state => state.type.types);
     const typesArr = Object.values(types);
-    console.log(typesArr)
+    // console.log(typesArr)
 
     const navigate = useNavigate();
     useEffect(() => {
