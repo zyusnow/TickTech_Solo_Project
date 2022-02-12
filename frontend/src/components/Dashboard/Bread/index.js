@@ -36,9 +36,9 @@ function Bread(){
                         <li className='da_content_li'>
                             <button id="content_btn" onClick={goToHosting}>Hosting</button>
                         </li>
-                        <li className='da_content_li'>
+                        {/* <li className='da_content_li'>
                             <button id="content_btn" onClick={goToAttending}>Attending</button>
-                        </li>
+                        </li> */}
                         <li className='da_content_li'>
                             <button id="content_btn" onClick={goToInterest}>Interests</button>
                         </li>

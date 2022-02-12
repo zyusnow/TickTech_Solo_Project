@@ -41,7 +41,7 @@ function App() {
               <Route path='/events/:id/edit' element={<EventEdit />} />
               <Route path='/users/hosting/*' element={<Hosting />} />
               <Route path='/users/interest' element={<Interest />} />
-              <Route path='/users/attending' element={<Attending />} />
+              {/* <Route path='/users/attending' element={<Attending />} /> */}
               <Route path='/login' element={<LoginPage />} />
               <Route path='/signup' element={<SignupPage />} />
               <Route path='/not-found' element={<PageNotFound />} />
