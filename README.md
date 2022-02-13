@@ -28,3 +28,6 @@ Please checkout live link: https://Tick-tech.herokuapp.com
 ### Start to travel
   - Run `npm start` both under frontend and backend folder
   - Ready to go
+
+## Features
+
