@@ -1,6 +1,6 @@
 ## Welcome to my project TickTech
 
-TichTech is inspired by meetup and eventbrite. It is a Tech-Events app for technical industry networking.
+TichTech is inspired by meetup and eventbrite. It is a Tech-Events app for technical industry networking. It allows users to post, like, attend events and make connections in the technical world.
 
 Please checkout live link: https://Tick-tech.herokuapp.com
 
