@@ -84,8 +84,35 @@ For the **frontend**:
           }
     }
   ```
+For the **backend**:
+```
+router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) => {
 
+    const { id } = req.user;
+    const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
 
+    const validateErrors = validationResult(req);
+    if (validateErrors.isEmpty()) {
+        const event = await Event.create({
+            name,
+            date,
+            capacity,
+            description,
+            virtual,
+            virtualUrl,
+            imgUrl,
+            published,
+            venueId,
+            typeId,
+            hostId: id
+        });
+        res.json(event);
+    }
+    else {
+        return res.json(validateErrors)
+    }
+}));
+```
 
 
 ## Guide to Set Up
