@@ -33,7 +33,6 @@ export const fetchApiVenues = () => async dispatch => {
     if (res.ok) {
         const venues = await res.json();
         dispatch(getVenues(venues))
-        // console.log("store", venues)
     }
 }
 
@@ -44,7 +43,6 @@ export const addNewVenue = (venue) => async dispatch => {
     });
 
     const resBody = await res.json();
-    // console.log(resBody);
 
     if (!resBody.errors) {
         const data = resBody;
@@ -61,7 +59,6 @@ export const editOldVenue = (venue, venueId) => async dispatch => {
         body: JSON.stringify(venue)
     });
     const resBody = await res.json()
-    // console.log("store",resBody)
     if (!resBody.errors) {
       const venue = resBody;
       await dispatch(editVenue(venue));
@@ -81,7 +78,6 @@ const venueReducer = (state = initialState, action) => {
             action.venues.forEach(venue => {
                 newState.venues[venue.id] = venue
             })
-            // console.log("reducer", newState)
             return newState;
         case ADD_VENUE:
             newState = {...state};

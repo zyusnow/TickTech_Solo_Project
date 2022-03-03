@@ -12,7 +12,6 @@ function EventsBrowse() {
 
     const types = useSelector(state => state.type.types);
     const typesArr = Object.values(types);
-    // console.log(typesArr)
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -30,7 +29,6 @@ function EventsBrowse() {
         navigate(`/events/${id}`);
     }
 
-    // console.log("EventBrowse Triggered")
 
     return (
         <>

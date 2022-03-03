@@ -68,7 +68,6 @@ function AddEvent() {
                 // venueHasError = true;
             }
         }
-        // console.log(venueId);
         const newEvent = {
             name: name ? name : 'draft event',
             date: date ? date: null,
@@ -85,7 +84,6 @@ function AddEvent() {
 
         let errEvent = [];
         const data2 = await dispatch(addEvent(newEvent))
-        // console.log("AddEvent Component",data2)
         const errors2 = data2.errors;
         if (errors2) { // if data has errors inside
             // venueHasError === true

@@ -68,7 +68,6 @@ function HasEvent({event, eventId}){
             }
         }
 
-        // console.log(venueId);
         const editedEvent = {
             name: name ? name : 'draft event',
             date: date ? date: null,
@@ -85,7 +84,6 @@ function HasEvent({event, eventId}){
 
         let errEvent = [];
         const data2 = await dispatch(editEvent(editedEvent, eventId, published))
-        // console.log("EditEvent Component",data2)
         const errors2 = data2?.errors;
         if (errors2) { // if data has errors inside
             // venueHasError === true

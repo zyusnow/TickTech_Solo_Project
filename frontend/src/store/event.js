@@ -74,7 +74,6 @@ export const fetchApiEvents = () => async dispatch => {
     const res = await csrfFetch(`/api/events`);
     // get data back
     const events = await res.json();
-    // console.log("thunk", events);
     // update state in the store
     dispatch(getEvents(events))
 }
@@ -84,7 +83,6 @@ export const fetchApiEvent = (id) => async dispatch => {
     if (res.ok) {
         const event = await res.json();
         dispatch(getEvent(event))
-        // console.log("store", event)
     }
 }
 
@@ -107,7 +105,6 @@ export const addEvent = (event, published) => async dispatch =>{
     });
 
     const resBody = await res.json();
-    // console.log("events.js->addEvent:resbody",resBody)
     if (!resBody.errors) {
         const data = resBody;
         if (published) {
@@ -141,9 +138,6 @@ export const deleteOldEvent = (id, published) => async dispatch => {
 }
 
 export const  editEvent = (event, eventId, published) => async dispatch => {
-    // console.log(event);
-    // console.log(eventId);
-    // console.log(published);
     const res = await csrfFetch(`/api/events/${eventId}/edit`, {
         method: 'PUT',
         headers: {

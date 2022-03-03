@@ -65,14 +65,12 @@ const validateEvent = [
 
 // ---------------------get all events_published---------------------
 router.get('/',asyncHandler(async function (req, res) {
-    // console.log("Get event received")
     const events = await Event.findAll({
         include: [Venue, Type],
         where:{
             published: true
         }
     });
-    // console.log("db", events)
     return res.json(events)
 }))
 
@@ -121,10 +119,6 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
     const eventId = parseInt(req.params.id, 10);
     const eventToUpdate = await Event.findByPk(eventId);
     const hostId = eventToUpdate.hostId;
-    // console.log("editroutes",hostId)
-    // console.log("editrouteseventId",eventId)
-    // console.log("editroutesevent",eventToUpdate)
-    // console.log("editroutes",hostId)
     const { name, date, capacity, description, virtual, virtualUrl, imgUrl, published, venueId, typeId} = req.body;
     if (id === hostId) {
         if (validateErrors.isEmpty()) {
@@ -138,11 +132,9 @@ router.put('/:id(\\d+)/edit', requireAuth, validateEvent, asyncHandler(async (re
 
 // ---------------------delete one event---------------------
 router.delete('/:id(\\d+)', requireAuth, validateEvent, asyncHandler(async function (req, res) {
-    //console.log(req);
     const eventId = parseInt(req.params.id, 10);
     const event = await Event.findByPk(eventId);
     const hostId = event.hostId;
-    // console.log("hihi", req.session)
     const { id } = req.user;
     if (id === hostId) {
         await event.destroy();
