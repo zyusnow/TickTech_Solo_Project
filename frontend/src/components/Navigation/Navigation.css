@@ -3,7 +3,7 @@
     height: 80px;
     padding: 0 8vw;
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr;
+    grid-template-columns: 1fr 4fr 3fr;
     align-items: center;
 }
 /* ------------------------------------------------------------ */
@@ -35,6 +35,8 @@
     color: var(--body_highlight_orange);
     font-weight: 400;
     font-size: 1.1em;
+    align-items: center;
+    display: flex;
 }
 
 /* ------------------------------------------------------------ */
@@ -119,4 +121,16 @@ ul.modal_ul_errors {
 
     border-radius: 5px;
     border: 1px solid #ffd08c;
+}
+
+.find_me{
+    display: flex;
+    width: 200px;
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.git_logo{
+    margin-right: -16px;
 }

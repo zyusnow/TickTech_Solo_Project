@@ -7,16 +7,17 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "js-cookie": "^3.0.1",
+    "mini-css-extract-plugin": "2.4.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-table": "^7.7.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "web-vitals": "^2.1.2",
-    "mini-css-extract-plugin": "2.4.5"
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
