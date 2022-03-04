@@ -17,18 +17,18 @@ function AddEvent() {
 
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
-    const [capacity, setCapacity] = useState("100");
-    const [description, setDescription] = useState('test');
+    const [capacity, setCapacity] = useState("");
+    const [description, setDescription] = useState('');
     const [virtual, setVirtual] = useState(false);
     const [virtualUrl, setVirtualUrl] = useState("");
-    const [imgUrl, setImgUrl] = useState("https://res.cloudinary.com/dprnsux1z/image/upload/v1642373646/fabio-oyXis2kALVg-unsplash_oxqc8e.jpg");
+    const [imgUrl, setImgUrl] = useState("");
     const [published, setPublished] = useState(true);
     const [typeId, setTypeId] = useState("");
-    const [venueName, setVenueName] = useState("bb");
-    const [venueAddress, setVenueAddress] = useState("123st");
-    const [venueCity, setVenueCity] = useState("Seattle");
-    const [venueState, setVenueState] = useState("WA");
-    const [venueZipCode, setVenueZipCode] = useState("98019");
+    const [venueName, setVenueName] = useState("");
+    const [venueAddress, setVenueAddress] = useState("");
+    const [venueCity, setVenueCity] = useState("");
+    const [venueState, setVenueState] = useState("");
+    const [venueZipCode, setVenueZipCode] = useState("");
     const [venueErrors, setVenueErrors] = useState([]);
     const [eventErrors, setEventErrors] = useState([]);
 
