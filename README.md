@@ -14,15 +14,15 @@ Please checkout live link: https://tick-tech.herokuapp.com/
 
 # Implementation
 
-TickTech was built with frontend using **React** and **Redux** ultilizing **RESTful** convention as the frontend routes structure. The **HTML** and **CSS** were written from entirely scratch and used no external libraries. 
+TickTech was built with frontend using **React** and **Redux** ultilizing **RESTful** convention as the frontend routes structure. The **HTML** and **CSS** were written from entirely scratch and used no external libraries.
 
-For the backend side, the application was using **Javascript** with framework **Express**, **Node.js**, **Sequelize** integrated **PostgreSQL** for database management. Other libraries and packages include bcrypt.js, express-validator, and csurf. Created a services layer for streamlined database queries and implemented server-side request validation and user authentication. 
+For the backend side, the application was using **Javascript** with framework **Express**, **Node.js**, **Sequelize** integrated **PostgreSQL** for database management. Other libraries and packages include bcrypt.js, express-validator, and csurf. Created a services layer for streamlined database queries and implemented server-side request validation and user authentication.
 
 ## Technical Insights
 
 To create a new event, TickTech allows user to make it in different angles:
   -  **Published event** or **Drafted event**
-  -  **Online event** or **offline event** 
+  -  **Online event** or **offline event**
   -  **Event category**: talk or seminar, meeting or networking, job fair, conference, etc.
   -  **Event detailed info**: event description, url or location, date, image.
 
@@ -131,6 +131,7 @@ router.post('/add', requireAuth, validateEvent, asyncHandler(async (req, res) =>
     - `npx dotenv sequelize db:create`
     - `npx dotenv sequelize db:migrate`
     - `npx dotenv sequelize db:seed:all`
+    
 
 ### Start to travel
   - Run `npm start` both under frontend and backend folder
